@@ -1,0 +1,94 @@
+﻿@model Recrute.Models.User
+
+@{
+    ViewBag.Title = "Create User";
+}
+
+<h2>Create</h2>
+
+<h3>Create a new account</h3>
+
+<section class="login">
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+
+ 
+    
+        <ul>
+            <li>
+                @Html.LabelFor(m => m.userName)
+                @Html.TextBoxFor(m => m.userName)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.userFirstName)
+                @Html.TextBoxFor(m => m.userFirstName)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.email)
+                @Html.TextBoxFor(m => m.email)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.password)
+                @Html.PasswordFor(m => m.password)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.DateOfBirth)
+                
+               @(Html.Kendo().DatePicker()
+                    .Name("datepicker")
+                    .Format("dd/MM/yyyy")
+                    .ParseFormats(new string[] {"dd/MM/yyyy"})
+                    .HtmlAttributes(new { style = "width:250px" })
+                    .Min(new DateTime(1900, 1, 1)) //Set min date of the datepicker
+                    .Max(DateTime.Today) //Set min date of the datepicker
+                    .Value(DateTime.Today) //Set the value of the datepicker
+                    //.Events(e => e.Change("datepicker_change"))
+                )
+               <!-- <script>
+                    function datepicker_change() {
+                        // Notice that the Name() of the datepicker is used to get its client-side instance
+                        var datepicker = $("#birthdate").data("kendoDatePicker");
+                        document.write(datepicker);
+                    }
+                </script>
+                   -->
+            </li>
+            <li>
+                @Html.LabelFor(m => m.nationality)
+                @Html.TextBoxFor(m => m.nationality)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.placeOfBirth)
+                @Html.TextBoxFor(m => m.placeOfBirth)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.famSituation)
+                @Html.TextBoxFor(m => m.famSituation)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.phoneNum)
+                @Html.TextBoxFor(m => m.phoneNum)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.gsmNum)
+                @Html.TextBoxFor(m => m.gsmNum)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.adress)
+                @Html.TextBoxFor(m => m.adress)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.city)
+                @Html.TextBoxFor(m => m.city)
+            </li>
+
+        </ul>
+        <input type="submit" value="Register" class="k-button" />
+}
+
+    </section>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
