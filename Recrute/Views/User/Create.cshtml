@@ -16,13 +16,13 @@
  
     
         <ul>
+             <li>
+                @Html.LabelFor(m => m.userFirstName)
+                @Html.TextBoxFor(m => m.userFirstName)
+            </li>
             <li>
                 @Html.LabelFor(m => m.userName)
                 @Html.TextBoxFor(m => m.userName)
-            </li>
-            <li>
-                @Html.LabelFor(m => m.userFirstName)
-                @Html.TextBoxFor(m => m.userFirstName)
             </li>
             <li>
                 @Html.LabelFor(m => m.email)
@@ -30,29 +30,20 @@
             </li>
             <li>
                 @Html.LabelFor(m => m.password)
-                @Html.PasswordFor(m => m.password)
+                @Html.TextBoxFor(m => m.password)
             </li>
             <li>
                 @Html.LabelFor(m => m.DateOfBirth)
                 
-               @(Html.Kendo().DatePicker()
-                    .Name("datepicker")
-                    .Format("dd/MM/yyyy")
-                    .ParseFormats(new string[] {"dd/MM/yyyy"})
+               @(Html.Kendo().DatePickerFor(m => m.DateOfBirth)
+                    .Name("DateOfBirth")
                     .HtmlAttributes(new { style = "width:250px" })
                     .Min(new DateTime(1900, 1, 1)) //Set min date of the datepicker
                     .Max(DateTime.Today) //Set min date of the datepicker
                     .Value(DateTime.Today) //Set the value of the datepicker
                     //.Events(e => e.Change("datepicker_change"))
                 )
-               <!-- <script>
-                    function datepicker_change() {
-                        // Notice that the Name() of the datepicker is used to get its client-side instance
-                        var datepicker = $("#birthdate").data("kendoDatePicker");
-                        document.write(datepicker);
-                    }
-                </script>
-                   -->
+               
             </li>
             <li>
                 @Html.LabelFor(m => m.nationality)
@@ -79,10 +70,21 @@
                 @Html.TextBoxFor(m => m.adress)
             </li>
             <li>
+                @Html.LabelFor(m => m.village)
+                @Html.TextBoxFor(m => m.village)
+            </li>
+            <li>
                 @Html.LabelFor(m => m.city)
                 @Html.TextBoxFor(m => m.city)
             </li>
-
+            <li>
+                @Html.LabelFor(m => m.country)
+                @Html.TextBoxFor(m => m.country)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.codePoste)
+                @Html.TextBoxFor(m => m.codePoste)
+            </li>
         </ul>
         <input type="submit" value="Register" class="k-button" />
 }

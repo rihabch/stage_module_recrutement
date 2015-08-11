@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Recrute.Models;
@@ -24,15 +25,19 @@ namespace Recrute.Controllers
             return View(users);
         }
 
-        public ActionResult Details(int id)
+        public ActionResult Details(int? id)
         {
-            User user = context.Users.SingleOrDefault(b => b.userID == id);
-
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            User user = context.Users.Find(id);
             if (user == null)
             {
                 return HttpNotFound();
             }
             return View(user);
+            
         }
 
         public ActionResult Create()
@@ -46,9 +51,9 @@ namespace Recrute.Controllers
             if (ModelState.IsValid)
             {
                 user.typeID = 1;
-                TypeUsers type = context.Types.SingleOrDefault(ty => ty.typeID == 1);
+                TypeUsers type = context.Types.Find(1);
+                //TypeUsers type = context.Types.SingleOrDefault(ty => ty.typeID == 1);
                 user.type = type;
-                //user.DateOfBirth = new DateTime();
                 context.Users.Add(user);
                 context.SaveChanges();
                 return RedirectToAction("Index");
@@ -59,7 +64,7 @@ namespace Recrute.Controllers
 
         public ActionResult Edit(int id)
         {
-            User user = context.Users.Single(p => p.userID == id);
+            User user = context.Users.Find(id);
             if (user == null)
             {
                 return HttpNotFound();
@@ -70,12 +75,25 @@ namespace Recrute.Controllers
         [HttpPost]
         public ActionResult Edit(int id, User user)
         {
-            User _user = context.Users.Single(p => p.userID == id);
+            User _user = context.Users.Find(id);
 
             if (ModelState.IsValid)
             {
                 _user.userName = user.userName;
+                _user.userFirstName = user.userFirstName;
                 _user.email = user.email;
+                _user.password = user.password;
+                _user.DateOfBirth = user.DateOfBirth;
+                _user.nationality = user.nationality;
+                _user.placeOfBirth = user.placeOfBirth;
+                _user.famSituation = user.famSituation;
+                _user.phoneNum = user.phoneNum;
+                _user.gsmNum = user.gsmNum;
+                _user.adress = user.adress;
+                _user.village = user.village;
+                _user.city = user.city;
+                _user.country = user.country;
+                _user.codePoste = user.codePoste;
 
                 context.SaveChanges();
                 return RedirectToAction("Index");
@@ -85,7 +103,7 @@ namespace Recrute.Controllers
 
         public ActionResult Delete(int id)
         {
-            User user = context.Users.Single(p => p.userID == id);
+            User user = context.Users.Find(id);
             if (user == null)
             {
                 return HttpNotFound();
@@ -93,10 +111,11 @@ namespace Recrute.Controllers
             return View(user);
         }
 
-        [HttpPost]
-        public ActionResult Delete(int id, User user)
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
         {
-            User _user = context.Users.Single(p => p.userID == id);
+            User _user = context.Users.Find(id);
             context.Users.Remove(_user);
             context.SaveChanges();
             return RedirectToAction("Index");

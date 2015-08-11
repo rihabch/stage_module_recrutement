@@ -5,3 +5,149 @@
 }
 
 <h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>User</legend>
+
+        @Html.HiddenFor(model => model.userID)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.userFirstName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.userFirstName)
+            @Html.ValidationMessageFor(model => model.userFirstName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.userName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.userName)
+            @Html.ValidationMessageFor(model => model.userName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.email)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.email)
+            @Html.ValidationMessageFor(model => model.email)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.password)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.password)
+            @Html.ValidationMessageFor(model => model.password)
+        </div>
+        <div class="editor-field">
+             @Html.LabelFor(m => m.DateOfBirth)
+        </div>
+        <div class="editor-field">
+               @(Html.Kendo().DatePickerFor(m => m.DateOfBirth)
+                    .Name("DateOfBirth")
+                    .HtmlAttributes(new { style = "width:150px" })
+                    //.Min(new DateTime(1900, 1, 1)) //Set min date of the datepicker
+                    .Max(DateTime.Today) //Set min date of the datepicker
+                    //.Value(DateTime.Today)
+                    )
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.nationality)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.nationality)
+            @Html.ValidationMessageFor(model => model.nationality)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.placeOfBirth)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.placeOfBirth)
+            @Html.ValidationMessageFor(model => model.placeOfBirth)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.famSituation)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.famSituation)
+            @Html.ValidationMessageFor(model => model.famSituation)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.phoneNum)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.phoneNum)
+            @Html.ValidationMessageFor(model => model.phoneNum)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.gsmNum)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.gsmNum)
+            @Html.ValidationMessageFor(model => model.gsmNum)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.adress)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.adress)
+            @Html.ValidationMessageFor(model => model.adress)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.village)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.village)
+            @Html.ValidationMessageFor(model => model.village)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.city)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.city)
+            @Html.ValidationMessageFor(model => model.city)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.country)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.country)
+            @Html.ValidationMessageFor(model => model.country)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.codePoste)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.codePoste)
+            @Html.ValidationMessageFor(model => model.codePoste)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

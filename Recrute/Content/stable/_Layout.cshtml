@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>@ViewBag.Title - My Telerik MVC Application</title>
+<title>@ViewBag.Title - Recrutement</title>
 <meta charset="utf-8">
 <meta name="format-detection" content="telephone=no" />
 <link rel="icon" href="images/favicon.ico">
@@ -22,10 +22,7 @@
 <script src="@Url.Content("~/Scripts/kendo/2015.2.624/kendo.aspnetmvc.min.js")"></script>
 <script src="@Url.Content("~/Scripts/kendo.modernizr.custom.js")"></script>
 <script>
- $(window).load(function(){
-  $().UItoTop({ easingType: 'easeOutQuart' });
-  $('#stuck_container').tmStickUp({});  
- }); 
+
 </script>
 <!--[if lt IE 8]>
  <div style=' clear: both; text-align:center; position: relative;'>
@@ -129,13 +126,15 @@
 <!--=====================
           Content
 ======================-->
-<section id="content"><div class="ic">More Website Templates @ TemplateMonster.com - July 28, 2014!</div>
+<section id="content"><div class="ic">More Website Templates at TemplateMonster.com - July 28, 2014!</div>
 
-    @RenderBody()
-    @Scripts.Render("~/bundles/jqueryui")
     @RenderSection("scripts", required: false)
     @RenderSection("featured", required: false)
 
+    <section class="content-wrapper main-content clear-fix">
+                @RenderBody()
+                @Scripts.Render("~/bundles/jqueryui")
+            </section>
  <!--
   <div class="container">
     <!--
