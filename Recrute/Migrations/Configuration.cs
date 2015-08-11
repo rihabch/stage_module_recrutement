@@ -7,6 +7,7 @@ namespace Recrute.Migrations
 
     internal sealed class Configuration : DbMigrationsConfiguration<Recrute.Models.RecruteContext>
     {
+        private string ContextKey;
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;

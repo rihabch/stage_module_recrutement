@@ -186,24 +186,30 @@ ul#menu {
     padding: 0;
     text-align: right;
 }
-
-    ul#menu li {
-        display: inline;
-        list-style: none;
-        padding-left: 15px;
+    ul#menu template img {
+        margin: 5px 20px 0 0;
+        float: left;
     }
-
-        ul#menu li a {
-            background: none;
-            color: #999;
-            text-decoration: none;
-        }
-
-        ul#menu li a:hover {
-            color: #333;
-            text-decoration: none;
-        }
-
+    ul#menu template {
+        width: 380px;
+    }
+    ul#menu template ol {
+        float: left;
+        margin: 0;
+        padding: 10px 10px 0 10px;
+    }
+    ul#menu template:after {
+        content: ".";
+        display: block;
+        height: 0;
+        clear: both;
+        visibility: hidden;
+    }
+    ul#menu template .k-button {
+        float: left;
+        clear: left;
+        margin: 5px 0 5px 12px;
+    }
 
 /* page elements
 ----------------------------------------------------------*/

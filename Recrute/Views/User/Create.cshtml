@@ -1,12 +1,12 @@
 ﻿@model Recrute.Models.User
 
 @{
-    ViewBag.Title = "Create User";
+    ViewBag.Title = "S'inscrire";
 }
 
 <h2>Create</h2>
 
-<h3>Create a new account</h3>
+<h3>Créer un nouveau compte</h3>
 
 <section class="login">
 @using (Html.BeginForm()) {
@@ -37,7 +37,7 @@
                 
                @(Html.Kendo().DatePickerFor(m => m.DateOfBirth)
                     .Name("DateOfBirth")
-                    .HtmlAttributes(new { style = "width:250px" })
+                    .HtmlAttributes(new { style = "width:300px" })
                     .Min(new DateTime(1900, 1, 1)) //Set min date of the datepicker
                     .Max(DateTime.Today) //Set min date of the datepicker
                     .Value(DateTime.Today) //Set the value of the datepicker
@@ -46,16 +46,28 @@
                
             </li>
             <li>
-                @Html.LabelFor(m => m.nationality)
-                @Html.TextBoxFor(m => m.nationality)
-            </li>
-            <li>
                 @Html.LabelFor(m => m.placeOfBirth)
                 @Html.TextBoxFor(m => m.placeOfBirth)
             </li>
             <li>
+                @Html.LabelFor(m => m.nationality)
+                @Html.TextBoxFor(m => m.nationality)
+            </li>
+            <li>
                 @Html.LabelFor(m => m.famSituation)
-                @Html.TextBoxFor(m => m.famSituation)
+                @(Html.Kendo().AutoComplete()
+                     .Name("familysituation")
+                     .Filter("startswith")
+                     .Placeholder("Choisir une situation familiale...")
+                     .BindTo(new string[] {
+                            "Célibataire",
+                            "Marié(e)",
+                            "Divorcé(e)",
+                            "Veuf(ve)",
+                     })
+                     .HtmlAttributes(new { style = "width:300px" })
+                )
+
             </li>
             <li>
                 @Html.LabelFor(m => m.phoneNum)
@@ -68,10 +80,6 @@
             <li>
                 @Html.LabelFor(m => m.adress)
                 @Html.TextBoxFor(m => m.adress)
-            </li>
-            <li>
-                @Html.LabelFor(m => m.village)
-                @Html.TextBoxFor(m => m.village)
             </li>
             <li>
                 @Html.LabelFor(m => m.city)

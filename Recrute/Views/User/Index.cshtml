@@ -9,7 +9,7 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table>
+<table border="1">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.userName)
@@ -43,9 +43,6 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.adress)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.village)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.city)
@@ -99,9 +96,6 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.adress)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.village)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.city)

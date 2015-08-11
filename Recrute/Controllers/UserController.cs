@@ -90,7 +90,6 @@ namespace Recrute.Controllers
                 _user.phoneNum = user.phoneNum;
                 _user.gsmNum = user.gsmNum;
                 _user.adress = user.adress;
-                _user.village = user.village;
                 _user.city = user.city;
                 _user.country = user.country;
                 _user.codePoste = user.codePoste;

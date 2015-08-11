@@ -31,12 +31,11 @@ namespace Recrute.Models
         public DateTime dateEnd { get; set; }
         [Display(Name = "Desciption")]
         public string description { get; set; }
-        [Display(Name = "Technical Knowlage")]
+        [Display(Name = "Technical Knowledge")]
         public string techKnow { get; set; }
-        [Display(Name = "Practical Knowlage")]
+        [Display(Name = "Practical Knowledge")]
         public string praticKnow { get; set; }
 
-        public int adminID { get; set; }
         public virtual User admin { get; set; }
 
         public InternshipOffer() { }
