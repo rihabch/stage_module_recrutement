@@ -49,7 +49,12 @@
             @Html.LabelFor(model => model.dateStart)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.dateStart)
+              @(Html.Kendo().DatePickerFor(model => model.dateStart)
+              .Name("dateStart")
+              .Value(DateTime.Today)
+              //.Max(DateTime.Today)
+              .Events(e => e.Change("startChange"))
+    )
             @Html.ValidationMessageFor(model => model.dateStart)
         </div>
 
@@ -57,15 +62,20 @@
             @Html.LabelFor(model => model.dateEnd)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.dateEnd)
-            @Html.ValidationMessageFor(model => model.dateEnd)
+          @(Html.Kendo().DatePickerFor(model=>model.dateEnd)
+          .Name("dateEnd")
+          .Value(DateTime.Today)
+          .Min(DateTime.Today)
+          .Events(e => e.Change("endChange"))
+          )
+          @Html.ValidationMessageFor(model => model.dateEnd)
         </div>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.description)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.description)
+            @Html.TextAreaFor(model => model.description, new { cols = 35, @rows = 3 })
             @Html.ValidationMessageFor(model => model.description)
         </div>
 
@@ -73,7 +83,7 @@
             @Html.LabelFor(model => model.techKnow)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.techKnow)
+            @Html.TextAreaFor(model => model.techKnow, new { cols = 35, @rows = 3 })
             @Html.ValidationMessageFor(model => model.techKnow)
         </div>
 
@@ -81,7 +91,7 @@
             @Html.LabelFor(model => model.praticKnow)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.praticKnow)
+            @Html.TextAreaFor(model => model.praticKnow, new { cols = 35, @rows = 3 })
             @Html.ValidationMessageFor(model => model.praticKnow)
         </div>
 
@@ -90,6 +100,31 @@
         </p>
     </fieldset>
 }
+
+<script>
+    function startChange() {
+        var endPicker = $("#dateEnd").data("kendoDatePicker"),
+            startDate = this.value();
+
+        if (startDate) {
+            startDate = new Date(startDate);
+            startDate.setDate(startDate.getDate() + 1);
+            endPicker.min(startDate);
+        }
+    }
+
+    function endChange() {
+        var startPicker = $("#dateStart").data("kendoDatePicker"),
+            endDate = this.value();
+
+        if (endDate) {
+            endDate = new Date(endDate);
+            endDate.setDate(endDate.getDate() - 1);
+            startPicker.max(endDate);
+        }
+    }
+</script>
+
 
 <div>
     @Html.ActionLink("Back to List", "Index")

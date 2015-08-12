@@ -51,6 +51,9 @@ namespace Recrute.Controllers
         {
             if (ModelState.IsValid)
             {
+                internshipoffer.adminID = 1; 
+                User admin = db.Users.Find(1);
+                internshipoffer.admin = admin;
                 db.Internships.Add(internshipoffer);
                 db.SaveChanges();
                 return RedirectToAction("Index");
