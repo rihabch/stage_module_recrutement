@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "About";
+    ViewBag.Title = "Qui sommes Nous?";
 }
 
 <hgroup class="title">
@@ -8,23 +8,69 @@
 </hgroup>
 
 <article>
-    <p>
-        Use this area to provide additional information.
-    </p>
-
-    <p>
-        Use this area to provide additional information.
-    </p>
-
-    <p>
-        Use this area to provide additional information.
-    </p>
+<p>Le groupe TELNET propose un éventail de compétences considérable. Il œuvre dans les secteurs d’activité suivants : </p>
+@(Html.Kendo().PanelBar()
+    .Name("IntroPanelBar")
+    .Items(items =>
+    {
+        items.Add()
+            .Text("Télécommunications")
+            .Selected(true)
+            .Expanded(true)
+            .Content(@<text>
+                <p style="padding:0 1em">
+                    TELNET met à contribution ses compétences et son expertise dans la téléphonie, le haut débit, le sans fil et les technologies mobiles pour produire les solutions de demain. Telnet développe de nouveaux équipements de télécommunications destinés aux opérateurs et aux particuliers.
+                    TELNET propose des compétences multiples dans le domaine des Télécommunications, elle opère dans le développement embarqué notamment pour les passerelles d’entreprises voix / données et les routeurs commutateurs multi protocole ; et développe des activités de validation,
+                     de qualification et de test pour les technologies ADSL – WIFI (modems et passerelles résidentielles XDSL) et les technologies GSM (mobiles 3G, tests d’interopérabilité opérateurs). TELNET opère aussi dans le développement, la qualification, la validation et les tests des plateformes DECT.</p>
+                <!--<a href="http://go.microsoft.com/fwlink/?LinkId=245151">Learn more…</a>-->
+            </text>);
+        items.Add()
+            .Text("Multimédia")
+            .Content(@<text>
+                <p style="padding:0 1em">TELNET oeuvre aussi bien dans le domaine du multimédia grand public tels que les écrans LCD/ DLP, les décodeurs IP, les récepteurs et les imprimantes photo, que pour le compte des opérateurs par les encodeurs CBR/VBR, les multiplexeurs, les modulateurs ou encore les serveurs vidéo.</p>
+            </text>);
+        items.Add()
+            .Text("Monétique")
+            .Content(@<text>
+                <p style="padding:0 1em">TELNET développe des solutions à carte à puce pour des usages variés des administrations publiques (santé, passeport, ID,…) et des opérateurs privés tels que les banques pour les paiements électroniques. Elle opère aussi dans le domaine de la biométrie et le contrôle d’accès, et tout autre application des cartes à puce.</p>
+            </text>);
+     items.Add()
+            .Text("Automobile et Transport")
+            .Content(@<text>
+                <p style="padding:0 1em">Forte d’une expérience de 15 ans dans le domaine automobile, TELNET intervient sur des projets innovants touchant différentes fonctionnalités du véhicule.
+                Nos ingénieurs mettent à la disposition de nos clients et partenaires leur expertise technique en les conseillant et en les accompagnant dans la réalisation de leurs produits en adoptant une stratégie qualité basée sur l’amélioration continue de nos process de développement.
+                Les interventions de TELNET dans le secteur de l’automobile portent essentiellement sur le développement des softs embarqués pour les calculateurs de contrôle moteur, les calculateurs de direction à assistance variable ainsi que les calculateurs de suspension. TELNET opère aussi sur les tableaux de bord et le multimédia embarqué.
+                TELNET apporte en outre son savoir-faire sur des projets de veille technologique portant sur le développement de l’électromobilité et des véhicules à très faible consommation. La voiture électrique étant un des projets stratégiques sur lequel nos ingénieurs œuvrent. </p>
+            </text>);
+     items.Add()
+            .Text("Sécurité")
+            .Content(@<text>
+                <p style="padding:0 1em">Les équipes de développement dans l’activité Sécurité travaillent principalement sur les plateformes AFIS (Automatic Fingerprint Identification Systems), avec des applications dans les domaines civils (passeports biométriques, cartes d’identification,…) et les domaines spécifiques (référencement et recherche biométrique). TELNET développe aussi une expertise dans les MEMS dans le développement de systèmes de contrôle d’accès aux bâtiments et aux frontières.</p>
+            </text>);
+     items.Add()
+            .Text("Défense et Avionique")
+            .Content(@<text>
+                <p style="padding:0 1em">TELNET développe une expertise pointue dans le secteur de l’avionique. Elle innove sur les bancs de tests et de mise en œuvre, les simulateurs, les centrales inertielles et les outils de dépouillement des données de vol ainsi que le développement de logiciels critiques embarqués selon le standard international DO178-B.</p>
+            </text>);
+    items.Add()
+            .Text("Industrie")
+            .Content(@<text>
+                <p style="padding:0 1em">Les principaux projets réalisés dans ce domaine portent sur les compteurs domestiques, les compteurs industriels, les répétiteurs sonores et les concentrateurs CPL, et ceci sur différentes plateformes de développement.</p>
+            </text>);
+    items.Add()
+            .Text("Systéme d'Information")
+            .Content(@<text>
+                <p style="padding:0 1em">Cette activité consiste dans le développement d’applications client/serveur, Internet et Intranet ainsi que des logiciels spécifiques en cycle de vie complet. Ces développements sont réalisés sur la plupart des environnements existants sur le marché et avec des architectures et des langages différents.</p>
+            </text>);
+    })
+)
+   
 </article>
 
 <aside>
-    <h3>Telerik UI for ASP.NET MVC TreeView</h3>
+    <h3>Recrutement TELNET</h3>
     <p>
-        Use this area to provide additional information.
+        Naviguez dans le site
     </p>
 
     @(Html.Kendo().TreeView()
@@ -34,9 +80,6 @@
             items.Add()
                 .Text("Home")
                 .Action("Index", "Home");
-            items.Add()
-                .Text("About")
-                .Action("About", "Home");
             items.Add()
                 .Text("Contact")
                 .Action("Contact", "Home");

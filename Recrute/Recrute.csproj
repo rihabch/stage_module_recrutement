@@ -168,6 +168,7 @@
   <ItemGroup>
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InternshipOfferController.cs" />
+    <Compile Include="Controllers\JobOfferController.cs" />
     <Compile Include="Models\JobOffer.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
@@ -827,6 +828,11 @@
     <Content Include="Views\InternshipOffer\Create.cshtml" />
     <Content Include="Views\InternshipOffer\Edit.cshtml" />
     <Content Include="Views\InternshipOffer\Delete.cshtml" />
+    <Content Include="Views\JobOffer\Index.cshtml" />
+    <Content Include="Views\JobOffer\Details.cshtml" />
+    <Content Include="Views\JobOffer\Create.cshtml" />
+    <Content Include="Views\JobOffer\Edit.cshtml" />
+    <Content Include="Views\JobOffer\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />

@@ -29,5 +29,7 @@ namespace Recrute.Migrations
             //    );
             //
         }
+
+        public string ContextKey { get; set; }
     }
 }

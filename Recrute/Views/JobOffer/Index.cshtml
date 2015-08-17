@@ -1,0 +1,87 @@
+﻿@model IEnumerable<Recrute.Controllers.JobOffer>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.poste)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.place)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.activity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dateOffre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.level)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.experience)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.profile)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.missions)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.atouts)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.adminID)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.poste)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.place)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.activity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dateOffre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.level)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.experience)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.profile)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.missions)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.atouts)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.adminID)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.offreRef }) |
+            @Html.ActionLink("Details", "Details", new { id=item.offreRef }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.offreRef })
+        </td>
+    </tr>
+}
+
+</table>

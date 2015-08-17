@@ -19,6 +19,7 @@ namespace Recrute.Controllers
         public string place { get; set; }
         [Display(Name = "Activité")]
         public string activity { get; set; }
+        [Display(Name = "Date de Publication d'offre")]
         public DateTime dateOffre { get; set; }
 
         [Display(Name = "Niveau")]
@@ -32,6 +33,7 @@ namespace Recrute.Controllers
         [Display(Name = "Atouts")]
         public string atouts { get; set; }
 
+        [Display(Name = "Administrateur")]
         public int adminID { get; set; }
         public virtual User admin { get; set; }
 

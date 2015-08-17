@@ -1,0 +1,96 @@
+﻿@model Recrute.Controllers.JobOffer
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>JobOffer</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.poste)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.poste)
+            @Html.ValidationMessageFor(model => model.poste)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.place)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.place)
+            @Html.ValidationMessageFor(model => model.place)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.activity)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.activity)
+            @Html.ValidationMessageFor(model => model.activity)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.level)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.level)
+            @Html.ValidationMessageFor(model => model.level)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.experience)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.experience)
+            @Html.ValidationMessageFor(model => model.experience)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.profile)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.profile)
+            @Html.ValidationMessageFor(model => model.profile)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.missions)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.missions)
+            @Html.ValidationMessageFor(model => model.missions)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.atouts)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.atouts)
+            @Html.ValidationMessageFor(model => model.atouts)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.adminID)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

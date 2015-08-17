@@ -80,17 +80,28 @@ namespace Recrute.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(InternshipOffer internshipoffer)
+        public ActionResult Edit(int id, InternshipOffer internship)
         {
+            InternshipOffer _internship = db.Internships.Find(id);
+
             if (ModelState.IsValid)
             {
-                db.Entry(internshipoffer).State = EntityState.Modified;
+                _internship.poste = internship.poste;
+                _internship.place = internship.place;
+                _internship.activity = internship.activity;
+                _internship.nbreInterns = internship.nbreInterns;
+                _internship.dateOffre = internship.dateOffre;
+                _internship.dateStart = internship.dateStart;
+                _internship.dateEnd = internship.dateEnd;
+                _internship.description = internship.description;
+                _internship.techKnow = internship.techKnow;
+                _internship.praticKnow = internship.praticKnow;
+
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(internshipoffer);
+            return View(internship);
         }
-
         //
         // GET: /InternshipOffer/Delete/5
 
