@@ -22,6 +22,8 @@ namespace Recrute.Models
         [Display(Name = "Nombre des stagiaires")]
         public int? nbreInterns { get; set; }
 
+        public DateTime dateOffre { get; set; }
+
         [Display(Name = "Date de début")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = false)]
@@ -42,6 +44,10 @@ namespace Recrute.Models
         public int adminID { get; set; }
         public virtual User admin { get; set; }
 
-        public InternshipOffer() { }
+        public InternshipOffer() {
+
+            dateOffre = DateTime.Now;
+
+        }
     }
 }

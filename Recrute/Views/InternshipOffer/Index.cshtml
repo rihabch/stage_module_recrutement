@@ -38,6 +38,9 @@
         <th>
             @Html.DisplayNameFor(model => model.praticKnow)
         </th>
+         <th>
+            @Html.DisplayNameFor(model => model.dateOffre)
+        </th>
         <th></th>
     </tr>
 
@@ -70,6 +73,10 @@
         <td>
             @Html.DisplayFor(modelItem => item.praticKnow)
         </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dateOffre)
+        </td>
+
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.offreRef }) |
             @Html.ActionLink("Details", "Details", new { id=item.offreRef }) |

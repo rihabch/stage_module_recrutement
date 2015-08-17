@@ -72,6 +72,14 @@
     <div class="display-field">
         @Html.DisplayFor(model => model.praticKnow)
     </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.dateOffre)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.dateOffre)
+    </div>
+
 </fieldset>
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
