@@ -4,13 +4,13 @@
 
 <hgroup class="title">
     <h1>@ViewBag.Title.</h1>
-    <h2>@ViewBag.Message</h2>
-</hgroup>
+    </hgroup>
 
 <article>
 <p>Le groupe TELNET propose un éventail de compétences considérable. Il œuvre dans les secteurs d’activité suivants : </p>
 @(Html.Kendo().PanelBar()
     .Name("IntroPanelBar")
+    .ExpandMode(PanelBarExpandMode.Single)
     .Items(items =>
     {
         items.Add()
