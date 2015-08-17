@@ -15,5 +15,4 @@ Actuellement le projet contient les fonctinnalités suivantes:
 Ce que nous comptons faire dans l'application prochainement:
 
 * login et logout des utilisateurs
-* gestion des offres d'emplois (J'ai déjà créé la gestion des offres de stages, donc ça sera à peu près pareil)
 * faire une candidature spontanée après le login
