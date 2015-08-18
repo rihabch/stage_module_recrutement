@@ -58,6 +58,9 @@ namespace Recrute.Models
         public byte?[] Photo { get; set; }
         public DateTime DateOfInscri { get; set; }
 
+        //[Display(Name = "Remember me?")]
+        //public bool RememberMe { get; set; }
+
         //[ForeignKey("TypeUsers")]
         public int typeID { get; set; }
         public virtual TypeUsers type { get; set; }

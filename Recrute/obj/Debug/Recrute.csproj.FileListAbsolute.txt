@@ -116,6 +116,8 @@ C:\Users\Rihab\documents\visual studio 2012\Projects\Recrute\Recrute\bin\System.
 C:\Users\Rihab\documents\visual studio 2012\Projects\Recrute\Recrute\bin\System.Web.WebPages.Razor.xml
 C:\Users\Rihab\documents\visual studio 2012\Projects\Recrute\Recrute\bin\WebMatrix.Data.xml
 C:\Users\Rihab\documents\visual studio 2012\Projects\Recrute\Recrute\bin\WebMatrix.WebData.xml
+C:\Users\Rihab\documents\visual studio 2012\Projects\Recrute\Recrute\obj\Debug\Recrute.Migrations.Initial.resources
+C:\Users\Rihab\documents\visual studio 2012\Projects\Recrute\Recrute\obj\Debug\Recrute.csproj.GenerateResource.Cache
 C:\Users\Rihab\documents\visual studio 2012\Projects\Recrute\Recrute\obj\Debug\Recrute.dll
 C:\Users\Rihab\documents\visual studio 2012\Projects\Recrute\Recrute\obj\Debug\Recrute.pdb
-C:\Users\Rihab\documents\visual studio 2012\Projects\Recrute\Recrute\obj\Debug\Recrute.csprojResolveAssemblyReference.cache
+C:\Users\Rihab\documents\visual studio 2012\Projects\Recrute\Recrute\obj\Debug\Recrute.Migrations.InitialMigrations.resources

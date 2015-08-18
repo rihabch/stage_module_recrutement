@@ -169,6 +169,14 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InternshipOfferController.cs" />
     <Compile Include="Controllers\JobOfferController.cs" />
+    <Compile Include="Migrations\201508181338231_Initial.cs" />
+    <Compile Include="Migrations\201508181338231_Initial.Designer.cs">
+      <DependentUpon>201508181338231_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201508181518344_InitialMigrations.cs" />
+    <Compile Include="Migrations\201508181518344_InitialMigrations.Designer.cs">
+      <DependentUpon>201508181518344_InitialMigrations.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\JobOffer.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
@@ -833,6 +841,8 @@
     <Content Include="Views\JobOffer\Create.cshtml" />
     <Content Include="Views\JobOffer\Edit.cshtml" />
     <Content Include="Views\JobOffer\Delete.cshtml" />
+    <Content Include="Views\User\Login.cshtml" />
+    <Content Include="Views\User\AfterLogin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
@@ -851,6 +861,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201508181338231_Initial.resx">
+      <DependentUpon>201508181338231_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201508181518344_InitialMigrations.resx">
+      <DependentUpon>201508181518344_InitialMigrations.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

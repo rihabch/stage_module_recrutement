@@ -125,5 +125,45 @@ namespace Recrute.Controllers
             context.Dispose();
             base.Dispose(disposing);
         }
+
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Login(User u)
+        {
+            // this action is for handle post (login)
+            if (ModelState.IsValid) // this is check validity
+            {
+                using (RecruteContext contex = new RecruteContext())
+                {
+                    var v = contex.Users.Where(a => a.email.Equals(u.email) && a.password.Equals(u.password)).FirstOrDefault();
+                    if (v != null)
+                    {
+                        Session["LogedUserID"] = v.userID.ToString();
+                        Session["LogedUserFirstname"] = v.userFirstName.ToString();
+                        Session["LogedUserName"] = v.userName.ToString();
+                        return RedirectToAction("AfterLogin");
+                    }
+                }
+            }
+            return View(u);
+        }
+
+        public ActionResult AfterLogin()
+        {
+            if (Session["LogedUserID"] != null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
+        }
+
     }
 }

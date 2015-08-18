@@ -1,0 +1,33 @@
+﻿@model Recrute.Models.User
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Login</h2>
+
+<h3>Se connecter</h3>
+
+<section class="login">
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+        <ul>
+            <li>
+                @Html.LabelFor(m => m.email)
+                @Html.TextBoxFor(m => m.email)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.password)
+                @Html.TextBoxFor(m => m.password)
+            </li>
+        </ul>    
+        <input type="submit" value="Register" class="k-button" />
+}
+
+    </section>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
