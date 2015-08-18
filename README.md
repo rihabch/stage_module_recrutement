@@ -10,9 +10,11 @@ Actuellement le projet contient les fonctinnalités suivantes:
 
 * Gestion des utilisateurs
 * Gestion des offres de stage
-* Présentation de l'entreprise TELNET
+* Gestion des offres d'embauche
+* Présentation de l'entreprise TELNET 
+* Authentification des utilisateurs
 
 Ce que nous comptons faire dans l'application prochainement:
 
-* login et logout des utilisateurs
+*logout des utilisateurs
 * faire une candidature spontanée après le login
