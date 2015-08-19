@@ -15,6 +15,5 @@ Actuellement le projet contient les fonctinnalités suivantes:
 * Authentification des utilisateurs
 
 Ce que nous comptons faire dans l'application prochainement:
-
-*logout des utilisateurs
+* Affectation des roles
 * faire une candidature spontanée après le login
