@@ -843,6 +843,7 @@
     <Content Include="Views\JobOffer\Delete.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\User\AfterLogin.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />

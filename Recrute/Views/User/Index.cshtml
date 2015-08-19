@@ -9,6 +9,12 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+@if (Session["LogedUserFirstname"] != null && Session["LogedUserName"]!= null)
+{
+ <text>
+  Welcome @Session["LogedUserFirstname"].ToString()  @Session["LogedUserName"].ToString()
+ </text>
+
 <table border="1">
     <tr>
         <th>
@@ -121,3 +127,4 @@
 }
 
 </table>
+}

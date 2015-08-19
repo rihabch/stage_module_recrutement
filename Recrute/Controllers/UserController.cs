@@ -4,7 +4,9 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using Recrute.Models;
+using WebMatrix.WebData;
 
 namespace Recrute.Controllers
 {
@@ -21,8 +23,16 @@ namespace Recrute.Controllers
         }
         public ActionResult Index()
         {
-            List<User> users = context.Users.ToList();
-            return View(users);
+
+            if (Session["LogedUserID"] == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                List<User> users = context.Users.ToList();
+                return View(users);
+            }
         }
 
         public ActionResult Details(int? id)
@@ -126,6 +136,101 @@ namespace Recrute.Controllers
             base.Dispose(disposing);
         }
 
+        // GET: /User/Login
+
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        // POST: /User/Login
+
+
+        [HttpPost]
+        public ActionResult Login(User user)
+        {
+            if (ModelState.IsValid)
+            {
+                if (ValidateUser(user.email, user.password))
+                {
+
+                    FormsAuthentication.SetAuthCookie(user.userFirstName, false);
+                    return RedirectToAction("Index", "User");
+                }
+                else
+                {
+                    ModelState.AddModelError("Erreur", "Email ou Mot de passe invalides!");
+                }
+            }
+            return View();
+        }
+
+        private bool ValidateUser(string Email, string Password)
+        {
+
+            bool isValid = false;
+            using (var db = new RecruteContext())
+            {
+                    var v = db.Users.Where(a => a.email.Equals(Email) && a.password.Equals(Password)).FirstOrDefault();
+                    if (v != null)
+                    {
+                        Session["LogedUserID"] = v.userID.ToString();
+                        Session["LogedUserFirstname"] = v.userFirstName.ToString();
+                        Session["LogedUserName"] = v.userName.ToString();
+                        isValid = true;
+                    }
+            }
+            return isValid;
+        }
+
+        // POST: /User/LogOff
+
+        public ActionResult LogOff()
+        {
+            Session.Abandon(); // it will clear the session at the end of request
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index", "Home");
+        }
+
+        // GET: /User/Login
+
+        /*[AllowAnonymous]
+        public ActionResult Login(string returnUrl)
+        {
+            ViewBag.ReturnUrl = returnUrl;
+            return View();
+        }
+
+        //
+        // POST: /User/Login
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult Login(User user, string returnUrl)
+        {
+            if (ModelState.IsValid && WebSecurity.Login(user.userName, user.password, persistCookie: model.RememberMe))
+            {
+                return RedirectToLocal(returnUrl);
+            }
+
+            // If we got this far, something failed, redisplay form
+            ModelState.AddModelError("", "The user name or password provided is incorrect.");
+            return View(user);
+        }
+
+        private ActionResult RedirectToLocal(string returnUrl)
+        {
+            if (Url.IsLocalUrl(returnUrl))
+            {
+                return Redirect(returnUrl);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
+        }
+/*
         public ActionResult Login()
         {
             return View();
@@ -164,6 +269,18 @@ namespace Recrute.Controllers
                 return RedirectToAction("Index");
             }
         }
+        
+        // POST: /User/LogOff
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult LogOff()
+        {
+            WebSecurity.Logout();
+
+            return RedirectToAction("Index", "Home");
+        }
+
+        */
     }
 }

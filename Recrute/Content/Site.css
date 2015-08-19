@@ -15,6 +15,25 @@
 .slideshow li {
    float: left;
 }
+
+.login-button
+    {
+        text-align: right;
+    }
+
+    .login-button a
+    {
+        margin-left: 4px;
+    }
+
+.hellouser
+{
+    font-size: 13px;
+    color:#999;
+    padding-right: 15px;
+}
+
+
 html {
     background-color: #e2e2e2;
     margin: 0;
@@ -61,6 +80,10 @@ mark {
 
 .float-left {
     float: left;
+}
+
+.float-right {
+    float: right;
 }
 
 .float-right {

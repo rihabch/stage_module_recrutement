@@ -121,3 +121,4 @@ C:\Users\Rihab\documents\visual studio 2012\Projects\Recrute\Recrute\obj\Debug\R
 C:\Users\Rihab\documents\visual studio 2012\Projects\Recrute\Recrute\obj\Debug\Recrute.dll
 C:\Users\Rihab\documents\visual studio 2012\Projects\Recrute\Recrute\obj\Debug\Recrute.pdb
 C:\Users\Rihab\documents\visual studio 2012\Projects\Recrute\Recrute\obj\Debug\Recrute.Migrations.InitialMigrations.resources
+C:\Users\Rihab\documents\visual studio 2012\Projects\Recrute\Recrute\obj\Debug\Recrute.csprojResolveAssemblyReference.cache
