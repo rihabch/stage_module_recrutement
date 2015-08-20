@@ -154,7 +154,7 @@ namespace Recrute.Controllers
                 if (ValidateUser(user.email, user.password))
                 {
 
-                    FormsAuthentication.SetAuthCookie(user.userFirstName, false);
+                    FormsAuthentication.SetAuthCookie(user.email, false);
                     return RedirectToAction("Index", "User");
                 }
                 else
