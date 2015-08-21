@@ -18,9 +18,9 @@ namespace Recrute.Models
         }
         [Key] // Primary key
         public int userID { get; set; }
-        [Display(Name = "Prénom")]
-        public string userName { get; set; }
         [Display(Name = "Nom")]
+        public string userName { get; set; }
+        [Display(Name = "Prénom")]
         public string userFirstName { get; set; }
         [Display(Name = "Adresse Email")]
         [Required(ErrorMessage = "L'email est un champ obligatoire")]
@@ -45,7 +45,7 @@ namespace Recrute.Models
         public int? phoneNum { get; set; }
         //[RegularExpression("^{8}$", ErrorMessage = "The mobile phone number is composed of 8 numbers")]
         //[DataType(DataType.PhoneNumber, ErrorMessage = "The mobile phone number should be a number")]
-        [Display(Name = "Numéro Téléphone Mobile")]
+        [Display(Name = "Numéro Téléphone Mobile  ")]
         public int? gsmNum { get; set; }
         [Display(Name = "Adresse")]
         public string adress { get; set; }

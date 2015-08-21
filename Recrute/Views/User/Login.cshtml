@@ -13,16 +13,14 @@
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary()
-        <ul>
-            <li>
+        
+            
                 @Html.LabelFor(m => m.email)
                 @Html.TextBoxFor(m => m.email)
-            </li>
-            <li>
+            
                 @Html.LabelFor(m => m.password)
                 @Html.TextBoxFor(m => m.password)
-            </li>
-        </ul>    
+       <br/>  
         <input type="submit" value="S'authentifier" class="k-button" />
 }
 

@@ -78,6 +78,7 @@ namespace Recrute.Controllers
         //
         // POST: /JobOffer/Edit/5
 
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, JobOffer job)
         {

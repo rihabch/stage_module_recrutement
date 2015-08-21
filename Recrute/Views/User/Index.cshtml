@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<Recrute.Models.User>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Liste des Utilisateurs";
 }
 
-<h2>Index</h2>
+<h2>Liste des Utilisateurs</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -119,9 +119,9 @@
             @Html.DisplayFor(modelItem => item.typeID)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.userID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.userID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.userID })
+            @Html.ActionLink("Modifier", "Edit", new { id=item.userID }) |
+            @Html.ActionLink("Détails", "Details", new { id=item.userID }) |
+            @Html.ActionLink("Supprimer", "Delete", new { id=item.userID })
         </td>
     </tr>
 }

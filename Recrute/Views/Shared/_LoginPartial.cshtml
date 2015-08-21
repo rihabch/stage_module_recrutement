@@ -10,7 +10,7 @@
         }
     </text>
 } else {
-    @Html.ActionLink("Log in", "Login", "User", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "k-button" })
-    //@Html.ActionLink("Manage Store", "Index", "StoreManager", routeValues: null, htmlAttributes: new { @class = "k-button" })
+    @Html.ActionLink("S'authentifier", "Login", "User", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "k-button" })
+    @Html.ActionLink("Créer un compte", "Create", "User", routeValues: null, htmlAttributes: new { @class = "k-button" })
     //@Html.ActionLink("View Sales Graphs", "Graphs", "StoreManager", routeValues: null, htmlAttributes: new { @class = "k-button" })
 }

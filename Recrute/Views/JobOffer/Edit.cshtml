@@ -1,94 +1,98 @@
 ﻿@model Recrute.Controllers.JobOffer
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Modifier Offre d'Embauche";
 }
 
-<h2>Edit</h2>
+<h2>Modifier Offre d'Embauche</h2>
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>JobOffer</legend>
+        <legend>Offre d'Embauche</legend>
 
         @Html.HiddenFor(model => model.offreRef)
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.poste)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.poste)
-            @Html.ValidationMessageFor(model => model.poste)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.place)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.place)
-            @Html.ValidationMessageFor(model => model.place)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.activity)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.activity)
-            @Html.ValidationMessageFor(model => model.activity)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.dateOffre)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.dateOffre)
-            @Html.ValidationMessageFor(model => model.dateOffre)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.level)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.level)
-            @Html.ValidationMessageFor(model => model.level)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.experience)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.experience)
-            @Html.ValidationMessageFor(model => model.experience)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.profile)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.profile)
-            @Html.ValidationMessageFor(model => model.profile)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.missions)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.missions)
-            @Html.ValidationMessageFor(model => model.missions)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.atouts)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.atouts)
-            @Html.ValidationMessageFor(model => model.atouts)
-        </div>
+         <table border="1">
+            <tr>
+                <th>
+                   @Html.LabelFor(model => model.poste)
+                </th>
+                <td>
+                    @Html.EditorFor(model => model.poste)
+                    @Html.ValidationMessageFor(model => model.poste)
+                 </td>
+            </tr>
+            <tr>
+                 <th>
+                    @Html.LabelFor(model => model.place)
+                </th>
+                <td>
+                    @Html.EditorFor(model => model.place)
+                    @Html.ValidationMessageFor(model => model.place)
+                </td>
+            </tr>
+            <tr>
+                 <th>
+                    @Html.LabelFor(model => model.activity)
+                </th>
+                <td>
+                    @Html.EditorFor(model => model.activity)
+                    @Html.ValidationMessageFor(model => model.activity)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.LabelFor(model => model.level)
+                </th>
+                <td>
+                    @Html.EditorFor(model => model.level)
+                    @Html.ValidationMessageFor(model => model.level)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.LabelFor(model => model.experience)
+                </th>
+                <td>
+                    @Html.EditorFor(model => model.experience)
+                    @Html.ValidationMessageFor(model => model.experience)
+               
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.LabelFor(model => model.profile)
+                </th>
+                <td>
+                    @Html.TextAreaFor(model => model.profile, new { cols = 35, @rows = 3 })
+                    @Html.ValidationMessageFor(model => model.profile)
+                </td>
+            </tr>
+             <tr>
+                <th>
+                    @Html.LabelFor(model => model.missions)
+                </th>
+                <td>
+                    @Html.TextAreaFor(model => model.missions, new { cols = 35, @rows = 3 })
+                    @Html.ValidationMessageFor(model => model.missions)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                     @Html.LabelFor(model => model.atouts)
+                </th>
+                <td>
+                    @Html.TextAreaFor(model => model.atouts, new { cols = 35, @rows = 3 })
+                    @Html.ValidationMessageFor(model => model.atouts)
+                </td>
+            </tr>
+    </table>
 
         <p>
-            <input type="submit" value="Save" />
+            <input type="submit" value="Enregistrer" />
         </p>
     </fieldset>
 }

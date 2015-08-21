@@ -1,13 +1,12 @@
 ﻿@model IEnumerable<Recrute.Controllers.JobOffer>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Liste des Offres d'Embauche";
 }
 
-<h2>Index</h2>
-
+<h2>Liste des Offres d'Embauche</h2>
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Ajouter Offre d'Embauche", "Create")
 </p>
 <table>
     <tr>
@@ -77,9 +76,9 @@
             @Html.DisplayFor(modelItem => item.adminID)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.offreRef }) |
-            @Html.ActionLink("Details", "Details", new { id=item.offreRef }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.offreRef })
+            @Html.ActionLink("Modifier", "Edit", new { id=item.offreRef }) |
+            @Html.ActionLink("Détails", "Details", new { id=item.offreRef }) |
+            @Html.ActionLink("Supprimer", "Delete", new { id=item.offreRef })
         </td>
     </tr>
 }

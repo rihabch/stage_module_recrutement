@@ -1,97 +1,135 @@
 ﻿@model Recrute.Models.InternshipOffer
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Modifier Offre de Stage";
 }
 
-<h2>Edit</h2>
+<h2>Modifier Offre de Stage</h2>
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>InternshipOffer</legend>
+        <legend>Offre de Stage</legend>
 
         @Html.HiddenFor(model => model.offreRef)
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.poste)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.poste)
-            @Html.ValidationMessageFor(model => model.poste)
-        </div>
+         <table border="1">
+            <tr>
+                 <th>
+                    @Html.LabelFor(model => model.place)
+                </th>
+                <td>
+                    @Html.EditorFor(model => model.place)
+                    @Html.ValidationMessageFor(model => model.place)
+                </td>
+            </tr>
+            <tr>
+                 <th>
+                    @Html.LabelFor(model => model.activity)
+                </th>
+                <td>
+                    @Html.EditorFor(model => model.activity)
+                    @Html.ValidationMessageFor(model => model.activity)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.LabelFor(model => model.poste)
+                </th>
+                <td>
+                    @Html.EditorFor(model => model.poste)
+                    @Html.ValidationMessageFor(model => model.poste)
+                </td>
+            </tr>
+         <tr>
+                <th>
+                    @Html.LabelFor(model => model.dateStart)
+                </th>
+                <td>
+                     @(Html.Kendo().DatePickerFor(model => model.dateStart)
+                      .Name("dateStart")
+                      .Value(DateTime.Today)
+                      //.Max(DateTime.Today)
+                      .Events(e => e.Change("startChange"))
+    )
+                    @Html.ValidationMessageFor(model => model.dateStart)
+                </td>
+            </tr>
+         <tr>
+                <th>
+                    @Html.LabelFor(model => model.dateEnd)
+                </th>
+                <td>
+                     @(Html.Kendo().DatePickerFor(model=>model.dateEnd)
+                      .Name("dateEnd")
+                      .Value(DateTime.Today)
+                      .Min(DateTime.Today)
+                      .Events(e => e.Change("endChange"))
+                      )
+                    @Html.ValidationMessageFor(model => model.dateEnd)
+                </td>
+            </tr>
+         <tr>
+                <th>
+                    @Html.LabelFor(model => model.description)
+                </th>
+                <td>
+                    @Html.TextAreaFor(model => model.description, new { cols = 35, @rows = 3 })
+                    @Html.ValidationMessageFor(model => model.description)
+                </td>
+            </tr>
+         <tr>
+                <th>
+                    @Html.LabelFor(model => model.techKnow)
+                </th>
+                <td>
+                    @Html.TextAreaFor(model => model.techKnow, new { cols = 35, @rows = 3 })
+                    @Html.ValidationMessageFor(model => model.techKnow)
+                </td>
+            </tr>
+         <tr>
+                <th>
+                    @Html.LabelFor(model => model.praticKnow)
+                </th>
+                <td>
+                    @Html.TextAreaFor(model => model.praticKnow, new { cols = 35, @rows = 3 })
+                    @Html.ValidationMessageFor(model => model.praticKnow)
+                </td>
+            </tr>
+    </table>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.place)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.place)
-            @Html.ValidationMessageFor(model => model.place)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.activity)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.activity)
-            @Html.ValidationMessageFor(model => model.activity)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.nbreInterns)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.nbreInterns)
-            @Html.ValidationMessageFor(model => model.nbreInterns)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.dateStart)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.dateStart)
-            @Html.ValidationMessageFor(model => model.dateStart)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.dateEnd)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.dateEnd)
-            @Html.ValidationMessageFor(model => model.dateEnd)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.description)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.description)
-            @Html.ValidationMessageFor(model => model.description)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.techKnow)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.techKnow)
-            @Html.ValidationMessageFor(model => model.techKnow)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.praticKnow)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.praticKnow)
-            @Html.ValidationMessageFor(model => model.praticKnow)
-        </div>
-
-        <p>
-            <input type="submit" value="Save" />
+         <p>
+            <input type="submit" value="Enregistrer" />
         </p>
+
     </fieldset>
 }
+
+<script>
+    function startChange() {
+        var endPicker = $("#dateEnd").data("kendoDatePicker"),
+            startDate = this.value();
+
+        if (startDate) {
+            startDate = new Date(startDate);
+            startDate.setDate(startDate.getDate() + 1);
+            endPicker.min(startDate);
+        }
+    }
+
+    function endChange() {
+        var startPicker = $("#dateStart").data("kendoDatePicker"),
+            endDate = this.value();
+
+        if (endDate) {
+            endDate = new Date(endDate);
+            endDate.setDate(endDate.getDate() - 1);
+            startPicker.max(endDate);
+        }
+    }
+</script>
 
 <div>
     @Html.ActionLink("Back to List", "Index")

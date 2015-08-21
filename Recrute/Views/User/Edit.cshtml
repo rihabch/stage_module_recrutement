@@ -1,134 +1,168 @@
 ﻿@model Recrute.Models.User
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Modifier un utilisateur";
 }
 
-<h2>Edit</h2>
+<h2>Modifier l'utilisateur</h2>
 
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>User</legend>
+        <legend>Utilisateur</legend>
 
         @Html.HiddenFor(model => model.userID)
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.userFirstName)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.userFirstName)
-            @Html.ValidationMessageFor(model => model.userFirstName)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.userName)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.userName)
-            @Html.ValidationMessageFor(model => model.userName)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.email)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.email)
+<table border="1">
+    <tr>
+        <th>
+           @Html.LabelFor(m => m.userFirstName)
+        </th>
+        <td>
+            @Html.EditorFor(m => m.userFirstName)
+             @Html.ValidationMessageFor(model => model.userFirstName)
+         </td>
+    </tr>
+    <tr>
+         <th>
+            @Html.LabelFor(m => m.userName)
+        </th>
+        <td>
+            @Html.EditorFor(m => m.userName)
+             @Html.ValidationMessageFor(model => model.userName)
+        </td>
+    </tr>
+    <tr>
+         <th>
+            @Html.LabelFor(m => m.email)
+        </th>
+        <td>
+            @Html.EditorFor(m => m.email)
             @Html.ValidationMessageFor(model => model.email)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.password)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.password)
+        </td>
+    </tr>
+    <tr>
+        <th>
+            @Html.LabelFor(m => m.password)
+        </th>
+        <td>
+            @Html.EditorFor(m => m.password)
             @Html.ValidationMessageFor(model => model.password)
-        </div>
-        <div class="editor-field">
-             @Html.LabelFor(m => m.DateOfBirth)
-        </div>
-        <div class="editor-field">
-               @(Html.Kendo().DatePickerFor(m => m.DateOfBirth)
+        </td>
+    </tr>
+    <tr>
+        <th>
+            @Html.LabelFor(m => m.DateOfBirth)
+        </th>
+        <td>
+            @(Html.Kendo().DatePickerFor(m => m.DateOfBirth)
                     .Name("DateOfBirth")
-                    .HtmlAttributes(new { style = "width:150px" })
-                    //.Min(new DateTime(1900, 1, 1)) //Set min date of the datepicker
+                    .HtmlAttributes(new { style = "width:300px" })
+                    .Min(new DateTime(1900, 1, 1)) //Set min date of the datepicker
                     .Max(DateTime.Today) //Set min date of the datepicker
-                    //.Value(DateTime.Today)
-                    )
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.nationality)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.nationality)
-            @Html.ValidationMessageFor(model => model.nationality)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.placeOfBirth)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.placeOfBirth)
+                    .Value(DateTime.Today) //Set the value of the datepicker
+                    //.Events(e => e.Change("datepicker_change"))
+                )
+             @Html.ValidationMessageFor(model => model.DateOfBirth)
+               
+        </td>
+    </tr>
+    <tr>
+        <th>
+            @Html.LabelFor(m => m.placeOfBirth)
+        </th>
+        <td>
+            @Html.EditorFor(m => m.placeOfBirth)
             @Html.ValidationMessageFor(model => model.placeOfBirth)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.famSituation)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.famSituation)
-            @Html.ValidationMessageFor(model => model.famSituation)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.phoneNum)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.phoneNum)
-            @Html.ValidationMessageFor(model => model.phoneNum)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.gsmNum)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.gsmNum)
+        </td>
+    </tr>
+     <tr>
+        <th>
+            @Html.LabelFor(m => m.nationality)
+        </th>
+        <td>
+            @Html.EditorFor(m => m.nationality)
+            @Html.ValidationMessageFor(model => model.nationality)
+        </td>
+    </tr>
+    <tr>
+        <th>
+             @Html.LabelFor(m => m.famSituation)
+        </th>
+        <td>
+            @Html.LabelFor(m => m.famSituation)
+                @(Html.Kendo().AutoComplete()
+                     .Name("familysituation")
+                     .Filter("startswith")
+                     .Placeholder("Choisir une situation familiale...")
+                     .BindTo(new string[] {
+                            "Célibataire",
+                            "Marié(e)",
+                            "Divorcé(e)",
+                            "Veuf(ve)",
+                     })
+                     .HtmlAttributes(new { style = "width:300px" })
+                )
+             @Html.ValidationMessageFor(model => model.famSituation)
+        </td>
+    </tr>
+    <tr>
+        <th>
+            @Html.LabelFor(m => m.gsmNum)
+        </th>
+        <td>
+            @Html.EditorFor(m => m.gsmNum)
             @Html.ValidationMessageFor(model => model.gsmNum)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.adress)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.adress)
+        </td>
+    </tr>
+    <tr>
+        <th>
+            @Html.LabelFor(m => m.phoneNum)
+        </th>
+        <td>
+            @Html.EditorFor(m => m.phoneNum)
+            @Html.ValidationMessageFor(model => model.phoneNum)
+        </td>
+    </tr>
+    <tr>
+        <th>
+            @Html.LabelFor(m => m.adress)
+        </th>
+        <td>
+            @Html.EditorFor(m => m.adress)
             @Html.ValidationMessageFor(model => model.adress)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.city)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.city)
-            @Html.ValidationMessageFor(model => model.city)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.country)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.country)
+        </td>
+    </tr>
+     <tr>
+        <th>
+            @Html.LabelFor(m => m.country)
+        </th>
+        <td>
+            @Html.EditorFor(m => m.country)
             @Html.ValidationMessageFor(model => model.country)
-        </div>
+        </td>
+    </tr>
+    <tr>
+        <th>
+            @Html.LabelFor(m => m.city)
+        </th>
+        <td>
+            @Html.EditorFor(m => m.city)
+            @Html.ValidationMessageFor(model => model.city)
+        </td>
+    </tr>
+    <tr>
+        <th>
+            @Html.LabelFor(m => m.codePoste)
+        </th>
+        <td>
+           @Html.EditorFor(m => m.codePoste)
+           @Html.ValidationMessageFor(model => model.codePoste)
+        </td>
+    </tr>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.codePoste)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.codePoste)
-            @Html.ValidationMessageFor(model => model.codePoste)
-        </div>
+    </table>
 
         <p>
             <input type="submit" value="Save" />

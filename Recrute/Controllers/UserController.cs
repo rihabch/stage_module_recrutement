@@ -66,6 +66,10 @@ namespace Recrute.Controllers
                 user.type = type;
                 context.Users.Add(user);
                 context.SaveChanges();
+                var user_co = context.Users.Find(user.userID);
+                Session["LogedUserID"] = user_co.userID.ToString();
+                Session["LogedUserFirstname"] = user_co.userFirstName.ToString();
+                Session["LogedUserName"] = user_co.userName.ToString();
                 return RedirectToAction("Index");
             }
 
