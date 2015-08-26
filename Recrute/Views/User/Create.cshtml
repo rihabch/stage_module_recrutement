@@ -48,7 +48,7 @@
             @Html.LabelFor(m => m.password)
         </th>
         <td>
-            @Html.EditorFor(m => m.password)
+            @Html.PasswordFor(m => m.password)
             @Html.ValidationMessageFor(model => model.password)
         </td>
     </tr>
@@ -59,7 +59,7 @@
         <td>
             @(Html.Kendo().DatePickerFor(m => m.DateOfBirth)
                     .Name("DateOfBirth")
-                    .HtmlAttributes(new { style = "width:300px" })
+                    .HtmlAttributes(new { style = "width:200px" })
                     .Min(new DateTime(1900, 1, 1)) //Set min date of the datepicker
                     .Max(DateTime.Today) //Set min date of the datepicker
                     .Value(DateTime.Today) //Set the value of the datepicker
@@ -92,9 +92,8 @@
              @Html.LabelFor(m => m.famSituation)
         </th>
         <td>
-            @Html.LabelFor(m => m.famSituation)
-                @(Html.Kendo().AutoComplete()
-                     .Name("familysituation")
+            @(Html.Kendo().AutoComplete()
+                     .Name("famSituation")
                      .Filter("startswith")
                      .Placeholder("Choisir une situation familiale...")
                      .BindTo(new string[] {
@@ -103,7 +102,7 @@
                             "Divorcé(e)",
                             "Veuf(ve)",
                      })
-                     .HtmlAttributes(new { style = "width:300px" })
+                     .HtmlAttributes(new { style = "width:200px" })
                 )
              @Html.ValidationMessageFor(model => model.famSituation)
         </td>

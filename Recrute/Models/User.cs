@@ -39,10 +39,10 @@ namespace Recrute.Models
         public string placeOfBirth { get; set; }
         [Display(Name = "Situation Familiale")]
         public string famSituation { get; set; }
-        [DataType(DataType.PhoneNumber, ErrorMessage = "Il s'agit d'un numero de Téléphone")]
+        [RegularExpression("([1-9][0-9]*)", ErrorMessage = "Numéro Téléphone Fixe doit etre un nombrer")]
         [Display(Name = "Numéro Téléphone Fixe")]
         public string phoneNum { get; set; }
-        [DataType(DataType.PhoneNumber, ErrorMessage = "Il s'agit d'un numero de Téléphone")]
+        [RegularExpression("([1-9][0-9]*)", ErrorMessage = "Numéro Téléphone Mobile doit etre un nombre")]
         [Display(Name = "Numéro Téléphone Mobile  ")]
         public string gsmNum { get; set; }
         [Display(Name = "Adresse")]
@@ -52,7 +52,7 @@ namespace Recrute.Models
         [Display(Name = "Pays")]
         public string country { get; set; }
         [Display(Name = "Code Postal")]
-        [DataType(DataType.PostalCode, ErrorMessage = "Il s'agit d'un code postal")]
+        [RegularExpression("([1-9][0-9]*)", ErrorMessage = "Code Postal doit etre un nombre")]
         public string codePoste { get; set; }
         public byte?[] Photo { get; set; }
         public DateTime DateOfInscri { get; set; }

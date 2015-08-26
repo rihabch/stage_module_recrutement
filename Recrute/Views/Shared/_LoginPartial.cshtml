@@ -3,10 +3,17 @@
         @using (Html.BeginForm("LogOff", "User", FormMethod.Post, new { id = "logoutForm" })) {
             @Html.AntiForgeryToken()
             <span class="hellouser">Bienvenue, @User.Identity.Name!</span> <a href="javascript:document.getElementById('logoutForm').submit()" class="k-button">Log off</a>
+            var membership = (SimpleMembershipProvider)Membership.Provider; 
+            int idUser = membership.GetUserId(User.Identity.Name);
+            @Html.ActionLink("Compte", "Details", "User", new { id = idUser }, htmlAttributes: new { @class = "k-button" })
             if (User.IsInRole("Admin")) {
-                @Html.ActionLink("Manage Store", "Index", "StoreManager", routeValues: null, htmlAttributes: new { @class = "k-button" })
-                @Html.ActionLink("View Sales Graphs", "Graphs", "StoreManager", routeValues: null, htmlAttributes: new { @class = "k-button" })
-            }   
+                
+                @Html.ActionLink("Gérer Utilisateurs", "Index", "User", routeValues: null, htmlAttributes: new { @class = "k-button" })
+            }
+            if (User.IsInRole("User"))
+               
+            {
+            }      
         }
     </text>
 } else {

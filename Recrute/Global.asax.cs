@@ -22,7 +22,7 @@ namespace Recrute
             AreaRegistration.RegisterAllAreas();
             if (!WebSecurity.Initialized)
             {
-                WebSecurity.InitializeDatabaseConnection("RecruteContext", "User", "userId", "userName", autoCreateTables: true);
+                WebSecurity.InitializeDatabaseConnection("RecruteContext", "User", "userId", "email", autoCreateTables: true);
                 
             }
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

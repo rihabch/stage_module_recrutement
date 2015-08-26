@@ -61,13 +61,14 @@ namespace Recrute.Controllers
             if (ModelState.IsValid)
             {
                 context.Users.Add(user);
-                context.SaveChanges();
+                
                 Session["LogedUserID"] = user.userID.ToString();
                 Session["LogedUserFirstname"] = user.userFirstName.ToString();
                 Session["LogedUserName"] = user.userName.ToString();
-                Roles.AddUserToRole(user.userName, "Admin");
-                FormsAuthentication.SetAuthCookie(user.userName, false);
-                Session["LoggedUserRole"] = Roles.GetRolesForUser(user.userName);
+                Roles.AddUserToRole(user.email, "Admin");
+                FormsAuthentication.SetAuthCookie(user.email, false);
+                Session["LoggedUserRole"] = Roles.GetRolesForUser(user.email);
+                context.SaveChanges();
                 return RedirectToAction("Index", "Home");
             }
 
@@ -153,17 +154,25 @@ namespace Recrute.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (ValidateUser(user.email, user.password))
+                using (RecruteContext contex = new RecruteContext())
                 {
-
-                    FormsAuthentication.SetAuthCookie(user.email, false);
-                    return RedirectToAction("Index", "User");
+                    var v = contex.Users.Where(a => a.email.Equals(user.email) && a.password.Equals(user.password)).FirstOrDefault();
+                    if (v != null)
+                    {
+                        Session["LogedUserID"] = v.userID.ToString();
+                        Session["LogedUserFirstname"] = v.userFirstName.ToString();
+                        Session["LogedUserName"] = v.userName.ToString();
+                        Session["LoggedUserRole"] = Roles.GetRolesForUser(v.email);
+                        FormsAuthentication.SetAuthCookie(v.email, false);
+                        return RedirectToAction("Index", "User");
+                    }
                 }
+            }
                 else
                 {
                     ModelState.AddModelError("Erreur", "Email ou Mot de passe invalides!");
                 }
-            }
+            
             return View();
         }
 
