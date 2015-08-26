@@ -10,6 +10,6 @@
 @if (Session["LogedUserFirstname"] != null && Session["LogedUserName"]!= null)
 {
  <text>
-  Welcome @Session["LogedUserFirstname"].ToString()  @Session["LogedUserName"].ToString()
+  Welcome @Session["LogedUserFirstname"].ToString()  @Session["LogedUserName"].ToString() @Session["LoggedUserRole"].ToString()
  </text>
 }

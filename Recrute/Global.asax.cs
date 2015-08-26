@@ -6,6 +6,9 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using System.Web.Security;
+using Recrute.Models;
+using WebMatrix.WebData;
 
 namespace Recrute
 {
@@ -17,7 +20,11 @@ namespace Recrute
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
-
+            if (!WebSecurity.Initialized)
+            {
+                WebSecurity.InitializeDatabaseConnection("RecruteContext", "User", "userId", "userName", autoCreateTables: true);
+                
+            }
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             WebApiConfig.Register(GlobalConfiguration.Configuration);

@@ -39,14 +39,12 @@ namespace Recrute.Models
         public string placeOfBirth { get; set; }
         [Display(Name = "Situation Familiale")]
         public string famSituation { get; set; }
-        //[RegularExpression("^{8}$", ErrorMessage = "The phone number is composed of 8 numbers")]
-        //[DataType(DataType.PhoneNumber, ErrorMessage = "The phone number should be a number")]
+        [DataType(DataType.PhoneNumber, ErrorMessage = "Il s'agit d'un numero de Téléphone")]
         [Display(Name = "Numéro Téléphone Fixe")]
-        public int? phoneNum { get; set; }
-        //[RegularExpression("^{8}$", ErrorMessage = "The mobile phone number is composed of 8 numbers")]
-        //[DataType(DataType.PhoneNumber, ErrorMessage = "The mobile phone number should be a number")]
+        public string phoneNum { get; set; }
+        [DataType(DataType.PhoneNumber, ErrorMessage = "Il s'agit d'un numero de Téléphone")]
         [Display(Name = "Numéro Téléphone Mobile  ")]
-        public int? gsmNum { get; set; }
+        public string gsmNum { get; set; }
         [Display(Name = "Adresse")]
         public string adress { get; set; }
         [Display(Name = "Ville")]
@@ -54,6 +52,7 @@ namespace Recrute.Models
         [Display(Name = "Pays")]
         public string country { get; set; }
         [Display(Name = "Code Postal")]
+        [DataType(DataType.PostalCode, ErrorMessage = "Il s'agit d'un code postal")]
         public string codePoste { get; set; }
         public byte?[] Photo { get; set; }
         public DateTime DateOfInscri { get; set; }
@@ -61,24 +60,6 @@ namespace Recrute.Models
         //[Display(Name = "Remember me?")]
         //public bool RememberMe { get; set; }
 
-        //[ForeignKey("TypeUsers")]
-        public int typeID { get; set; }
-        public virtual TypeUsers type { get; set; }
-
         public ICollection<InternshipOffer> Internships { get; set; }
-    }
-
-    [Table("TypeUsers")] // Table name
-    public class TypeUsers
-    {
-        public TypeUsers()
-        {
-
-        }
-        [Key]
-        public int typeID { get; set; }
-        public string typeLabel { get; set; }
-
-        public ICollection<User> Users { get; set; }
     }
 }

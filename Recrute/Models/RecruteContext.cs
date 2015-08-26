@@ -15,7 +15,6 @@ namespace Recrute.Models
         }
 
         public DbSet<User> Users { get; set; }
-        public DbSet<TypeUsers> Types { get; set; }
         public DbSet<InternshipOffer> Internships { get; set; }
         public DbSet<JobOffer> Jobs { get; set; }
 

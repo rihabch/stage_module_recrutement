@@ -60,17 +60,15 @@ namespace Recrute.Controllers
         {
             if (ModelState.IsValid)
             {
-                user.typeID = 1;
-                TypeUsers type = context.Types.Find(1);
-                //TypeUsers type = context.Types.SingleOrDefault(ty => ty.typeID == 1);
-                user.type = type;
                 context.Users.Add(user);
                 context.SaveChanges();
-                var user_co = context.Users.Find(user.userID);
-                Session["LogedUserID"] = user_co.userID.ToString();
-                Session["LogedUserFirstname"] = user_co.userFirstName.ToString();
-                Session["LogedUserName"] = user_co.userName.ToString();
-                return RedirectToAction("Index");
+                Session["LogedUserID"] = user.userID.ToString();
+                Session["LogedUserFirstname"] = user.userFirstName.ToString();
+                Session["LogedUserName"] = user.userName.ToString();
+                Roles.AddUserToRole(user.userName, "Admin");
+                FormsAuthentication.SetAuthCookie(user.userName, false);
+                Session["LoggedUserRole"] = Roles.GetRolesForUser(user.userName);
+                return RedirectToAction("Index", "Home");
             }
 
             return View(user);
