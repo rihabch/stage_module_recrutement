@@ -10,7 +10,7 @@ namespace Recrute.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Message = "Bienvenue dans notre Platforme"; 
+            ViewBag.Message = "Bienvenue dans notre platforme"; 
 
             return View();
         }

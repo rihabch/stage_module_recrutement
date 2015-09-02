@@ -59,7 +59,7 @@
         <td>
             @(Html.Kendo().DatePickerFor(m => m.DateOfBirth)
                     .Name("DateOfBirth")
-                    .HtmlAttributes(new { style = "width:200px" })
+                    .HtmlAttributes(new { style = "width:170px" })
                     .Min(new DateTime(1900, 1, 1)) //Set min date of the datepicker
                     .Max(DateTime.Today) //Set min date of the datepicker
                     .Value(DateTime.Today) //Set the value of the datepicker
@@ -102,7 +102,7 @@
                             "Divorcé(e)",
                             "Veuf(ve)",
                      })
-                     .HtmlAttributes(new { style = "width:200px" })
+                     .HtmlAttributes(new { style = "width:170px" })
                 )
              @Html.ValidationMessageFor(model => model.famSituation)
         </td>

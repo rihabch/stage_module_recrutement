@@ -1,20 +1,36 @@
-﻿.slideshow {
-   width: 940px;
-   height: 320px;
-   overflow: hidden;
-   border: 3px solid #F2F2F2;
+﻿/* rotator in-page placement */
+    div.rotator {
+    position:relative;
+    height:345px;
+    display:none;
+}
+/* rotator css */
+    div.rotator ul {
+    margin:0;
+    padding:0;
+}
+    div.rotator ul li {
+    float:left;
+    position:absolute;
+    list-style: none;
+}
+/* rotator image style */
+    div.rotator ul li img {
+    border:1px solid #ccc;
+    padding: 4px;
+    background: #FFF;
+}
+    div.rotator ul li.show {
+    z-index:500;
 }
 
-.slideshow ul {
-    /* 4 images donc 4 x 100% */
-   width: 300%;
-   height: 320px;
-   padding:0; margin:0;
-   list-style: none;
+.image_centre {
+	margin-left:15%;
+	margin-right:15%;
+	width: 900px;
+	height: 300px;
 }
-.slideshow li {
-   float: left;
-}
+
 
 .login-button
     {
@@ -86,10 +102,6 @@ mark {
     float: right;
 }
 
-.float-right {
-    float: right;
-}
-
 .clear-fix:after {
     content: ".";
     clear: both;
@@ -139,7 +151,7 @@ h5, h6 {
 }
 
 #body {
-    background-color: #efeeef;
+    background-color: #e2e2e2;
     clear: both;
     padding-bottom: 35px;
 }

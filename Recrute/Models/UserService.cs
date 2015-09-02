@@ -40,7 +40,7 @@ namespace Recrute.Models
                 city = user.city,
                 codePoste = user.codePoste,
                 DateOfInscri = user.DateOfInscri
-            
+
             });
         }
 
@@ -62,8 +62,8 @@ namespace Recrute.Models
             entity.country = user.country;
             entity.city = user.city;
             entity.codePoste = user.codePoste;
-            entity.DateOfInscri = user.DateOfInscri;  
-          
+            entity.DateOfInscri = user.DateOfInscri;
+
             entities.Users.Add(entity);
             entities.SaveChanges();
 

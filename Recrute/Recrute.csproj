@@ -177,6 +177,7 @@
     <Compile Include="Migrations\201508181518344_InitialMigrations.Designer.cs">
       <DependentUpon>201508181518344_InitialMigrations.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\CandidatureSpontanee.cs" />
     <Compile Include="Models\JobOffer.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
@@ -186,6 +187,7 @@
     <Compile Include="Models\InternshipOffer.cs" />
     <Compile Include="Models\RecruteContext.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Models\UserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

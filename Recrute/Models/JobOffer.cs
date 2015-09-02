@@ -4,9 +4,8 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
-using Recrute.Models;
 
-namespace Recrute.Controllers
+namespace Recrute.Models
 {
     [Table("JobOffer")]
     public class JobOffer
@@ -33,7 +32,7 @@ namespace Recrute.Controllers
         [Display(Name = "Atouts")]
         public string atouts { get; set; }
 
-        [Display(Name = "Administrateur")]
+        //[Display(Name = "Administrateur")]
         public int adminID { get; set; }
         public virtual User admin { get; set; }
 

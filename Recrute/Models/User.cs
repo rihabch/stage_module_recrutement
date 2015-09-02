@@ -26,6 +26,7 @@ namespace Recrute.Models
         [Required(ErrorMessage = "L'email est un champ obligatoire")]
         [EmailAddress(ErrorMessage = "Adresse email invalide")]
         public string email { get; set; }
+        [DataType(DataType.Password)]
         [Display(Name = "Mot de passe")]
         [Required(ErrorMessage = "Le mot de passe est un champ obligatoire")]
         public string password { get; set; }
@@ -54,12 +55,17 @@ namespace Recrute.Models
         [Display(Name = "Code Postal")]
         [RegularExpression("([1-9][0-9]*)", ErrorMessage = "Code Postal doit etre un nombre")]
         public string codePoste { get; set; }
+        [Display(Name = "Photo")]
         public byte?[] Photo { get; set; }
+        [Display(Name = "Date de l'inscription")]
         public DateTime DateOfInscri { get; set; }
 
         //[Display(Name = "Remember me?")]
         //public bool RememberMe { get; set; }
 
         public ICollection<InternshipOffer> Internships { get; set; }
+        public ICollection<JobOffer> Jobs { get; set; }
+        public ICollection<CandidatureSpontanee> Candidatures { get; set; }
+
     }
 }

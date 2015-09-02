@@ -22,6 +22,7 @@ namespace Recrute.Models
         [Display(Name = "Nombre des stagiaires")]
         public int? nbreInterns { get; set; }
 
+        [Display(Name = "Date Publication de l'offre")]
         public DateTime dateOffre { get; set; }
 
         [Display(Name = "Date de début")]

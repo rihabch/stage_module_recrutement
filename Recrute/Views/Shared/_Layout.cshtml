@@ -13,18 +13,52 @@
 	<script src="@Url.Content("~/Scripts/kendo/2015.2.624/kendo.all.min.js")"></script>
 	<script src="@Url.Content("~/Scripts/kendo/2015.2.624/kendo.aspnetmvc.min.js")"></script>
 	<script src="@Url.Content("~/Scripts/kendo.modernizr.custom.js")"></script>
-</head>
+
+    <link rel="stylesheet" type="text/css" href="../Scripts/engine1/style.css" />
+    
+
+    </head>
     <body>
+
         <header>
             <div class="content-wrapper">
-                <div class="float-left">
-                    <p class="site-title">@Html.ActionLink("TELNET Holdings", "Index", "Home")</p>
+                <div class="float-left">&nbsp;
+                  <table>
+                        <tr>
+                            <td width="557">
+                                <img  class="site-title"  src="../Images/top_logo.png" alt="TELNET Holdings" />
+                            </td>
+                            <td width="311">
+                                @using (Html.BeginForm())
+                                {
+                                    <p>Cherchez dans le site: @Html.TextBox("Chezchez dans le site")                                        </p>
+                                }
+                            <input type="submit" value="Recherche" /></td>
+                        </tr>
+                    </table>
+                   
+                   
+                    <!--<p class="site-title">@Html.ActionLink("titre", "Index", "Home")</p>-->
                 </div>   
                 <div class="float-right">
                     <nav>
+                        
                          <section class="login-button">
                             @Html.Partial("_LoginPartial")
+                             
                         </section>
+
+                        <div id="wowslider-container1">
+                    <div class="ws_images"><ul>
+		                    <li><img src="../Scripts/data1/images/pic1.jpg" alt="pic1" title="pic1" id="wows1_0"/></li>
+		                    <li><img src="../Scripts/data1/images/pic2.jpg" alt="wowslideshow" title="pic2" id="wows1_1"/></li>
+		                    <li><img src="../Scripts/data1/images/pic3.jpg" alt="pic3" title="pic3" id="wows1_2"/></li>
+	                    </ul></div>
+                    <div class="ws_shadow"></div>
+                    </div>	
+                    <script type="text/javascript" src="../Scripts/engine1/wowslider.js"></script>
+                    <script type="text/javascript" src="../Scripts/engine1/script.js"></script>
+            
 
                         <ul id="menu">
    @(Html.Kendo().Menu()
@@ -40,6 +74,7 @@
                    children.Add().Text("Offres Stage").Action("Index", "InternshipOffer"); ;
                    //HtmlAttributes(new { style = "font-size:medium; text-transform: uppercase; display: block; width:20em; background:#a0a0a0; list-style:none; margin:auto; line-height:2em; border:1px solid #a60000; position:absolute; top: 40px" });
                });
+          items.Add().Text("Candidature Spontannée").Action("Index", "Home");
           items.Add().Text("Contact").Action("Contact", "Home");//.Enabled(false);
       })
       .HtmlAttributes(new { style = "text-transform: uppercase; padding: 5px 10px; display: block;" })
@@ -52,29 +87,13 @@
             </div>
         </header>
         <div id="body">
-            <!--<div class="slideshow">
-	            <ul>
-		            <li><img src="Images/pic1.PNG" alt="" width="940" height="320" /></li>
-		            <li><img src="Images/pic2.jpeg" alt="" width="940" height="320" /></li>
-		            <li><img src="Images/pic3.jpg" alt="" width="940" height="320" /></li>
-	            </ul>
-            </div>
-
-            <script type="text/javascript">
-                $(function () {
-                    setInterval(function () {
-                        $(".slideshow ul").animate({ marginLeft: -1140 }, 1000, function () {
-                            $(this).css({ marginLeft: 200 }).find("li:last").after($(this).find("li:first"));
-                        })
-                    }, 3500);
-                });
-            </script>
-            -->
+            
             @RenderSection("scripts", required: false)
             @RenderSection("featured", required: false)
             <section class="content-wrapper main-content clear-fix">
                 @RenderBody()
                 @Scripts.Render("~/bundles/jqueryui")
+                
             </section>
         </div>
 

@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using Kendo.Mvc.UI;
 using Recrute.Models;
-using WebMatrix.WebData;
+using Kendo.Mvc.Extensions;
+using System.Data.Entity;
+using System.Web;
 
 namespace Recrute.Controllers
 {
@@ -16,10 +17,12 @@ namespace Recrute.Controllers
         // GET: /User/
 
         RecruteContext context = null;
+        UserService userservice = null;
 
         public UserController()
         {
             context = new RecruteContext();
+            userservice = new UserService();
         }
         public ActionResult Index()
         {
@@ -62,6 +65,33 @@ namespace Recrute.Controllers
             {
                 context.Users.Add(user);
                 
+                Session["LogedUserID"] = user.userID.ToString();
+                Session["LogedUserFirstname"] = user.userFirstName.ToString();
+                Session["LogedUserName"] = user.userName.ToString();
+                
+                FormsAuthentication.SetAuthCookie(user.email, false);
+                context.SaveChanges();
+                Session["LoggedUserRole"] = Roles.GetRolesForUser(user.email);
+                
+                Roles.AddUserToRole(user.email, "User");
+                return RedirectToAction("Index", "Home");
+            }
+
+            return View(user);
+        }
+
+        public ActionResult CreateAdmin()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CreateAdmin(User user)
+        {
+            if (ModelState.IsValid)
+            {
+                context.Users.Add(user);
+
                 Session["LogedUserID"] = user.userID.ToString();
                 Session["LogedUserFirstname"] = user.userFirstName.ToString();
                 Session["LogedUserName"] = user.userName.ToString();
@@ -202,96 +232,49 @@ namespace Recrute.Controllers
             FormsAuthentication.SignOut();
             return RedirectToAction("Index", "Home");
         }
-
-        // GET: /User/Login
-
-        /*[AllowAnonymous]
-        public ActionResult Login(string returnUrl)
-        {
-            ViewBag.ReturnUrl = returnUrl;
-            return View();
-        }
-
-        //
-        // POST: /User/Login
-
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public ActionResult Login(User user, string returnUrl)
-        {
-            if (ModelState.IsValid && WebSecurity.Login(user.userName, user.password, persistCookie: model.RememberMe))
-            {
-                return RedirectToLocal(returnUrl);
-            }
-
-            // If we got this far, something failed, redisplay form
-            ModelState.AddModelError("", "The user name or password provided is incorrect.");
-            return View(user);
-        }
-
-        private ActionResult RedirectToLocal(string returnUrl)
-        {
-            if (Url.IsLocalUrl(returnUrl))
-            {
-                return Redirect(returnUrl);
-            }
-            else
-            {
-                return RedirectToAction("Index", "Home");
-            }
-        }
-/*
-        public ActionResult Login()
+        public ActionResult Editing_Popup()
         {
             return View();
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Login(User u)
+        public ActionResult EditingPopup_Read([DataSourceRequest] DataSourceRequest request)
         {
-            // this action is for handle post (login)
-            if (ModelState.IsValid) // this is check validity
-            {
-                using (RecruteContext contex = new RecruteContext())
-                {
-                    var v = contex.Users.Where(a => a.email.Equals(u.email) && a.password.Equals(u.password)).FirstOrDefault();
-                    if (v != null)
-                    {
-                        Session["LogedUserID"] = v.userID.ToString();
-                        Session["LogedUserFirstname"] = v.userFirstName.ToString();
-                        Session["LogedUserName"] = v.userName.ToString();
-                        return RedirectToAction("AfterLogin");
-                    }
-                }
-            }
-            return View(u);
+            userservice = new UserService();
+            return Json(userservice.Read().ToDataSourceResult(request));
         }
 
-        public ActionResult AfterLogin()
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult EditingPopup_Create([DataSourceRequest] DataSourceRequest request, User user)
         {
-            if (Session["LogedUserID"] != null)
+            if (user != null && ModelState.IsValid)
             {
-                return View();
+                userservice.Create(user);
             }
-            else
+
+            return Json(new[] { user }.ToDataSourceResult(request, ModelState));
+        }
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult EditingPopup_Update([DataSourceRequest] DataSourceRequest request, User user)
+        {
+            if (user != null && ModelState.IsValid)
             {
-                return RedirectToAction("Index");
+                userservice.Update(user);
             }
+
+            return Json(new[] { user }.ToDataSourceResult(request, ModelState));
+        }
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult EditingPopup_Destroy([DataSourceRequest] DataSourceRequest request, User user)
+        {
+            if (user != null)
+            {
+                userservice.Destroy(user);
+            }
+
+            return Json(new[] { user }.ToDataSourceResult(request, ModelState));
         }
         
-        // POST: /User/LogOff
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult LogOff()
-        {
-            WebSecurity.Logout();
-
-            return RedirectToAction("Index", "Home");
-        }
-
-        */
     }
 }

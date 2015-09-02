@@ -78,7 +78,6 @@ C:\Users\Rihab\documents\visual studio 2012\Projects\Recrute\Recrute\bin\DotNetO
 C:\Users\Rihab\documents\visual studio 2012\Projects\Recrute\Recrute\bin\DotNetOpenAuth.OpenId.dll
 C:\Users\Rihab\documents\visual studio 2012\Projects\Recrute\Recrute\bin\DotNetOpenAuth.OpenId.RelyingParty.dll
 C:\Users\Rihab\documents\visual studio 2012\Projects\Recrute\Recrute\bin\EntityFramework.dll
-C:\Users\Rihab\documents\visual studio 2012\Projects\Recrute\Recrute\bin\EntityFramework.SqlServer.dll
 C:\Users\Rihab\documents\visual studio 2012\Projects\Recrute\Recrute\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\Rihab\documents\visual studio 2012\Projects\Recrute\Recrute\bin\Microsoft.Web.WebPages.OAuth.dll
 C:\Users\Rihab\documents\visual studio 2012\Projects\Recrute\Recrute\bin\Newtonsoft.Json.dll
@@ -102,7 +101,6 @@ C:\Users\Rihab\documents\visual studio 2012\Projects\Recrute\Recrute\bin\DotNetO
 C:\Users\Rihab\documents\visual studio 2012\Projects\Recrute\Recrute\bin\DotNetOpenAuth.OpenId.xml
 C:\Users\Rihab\documents\visual studio 2012\Projects\Recrute\Recrute\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
 C:\Users\Rihab\documents\visual studio 2012\Projects\Recrute\Recrute\bin\EntityFramework.xml
-C:\Users\Rihab\documents\visual studio 2012\Projects\Recrute\Recrute\bin\EntityFramework.SqlServer.xml
 C:\Users\Rihab\documents\visual studio 2012\Projects\Recrute\Recrute\bin\Microsoft.Web.WebPages.OAuth.xml
 C:\Users\Rihab\documents\visual studio 2012\Projects\Recrute\Recrute\bin\Newtonsoft.Json.xml
 C:\Users\Rihab\documents\visual studio 2012\Projects\Recrute\Recrute\bin\System.Net.Http.Formatting.xml
@@ -140,3 +138,5 @@ C:\Users\Rihab\documents\visual studio 2012\Projects\Recrute\Recrute\bin\sv-SE\K
 C:\Users\Rihab\documents\visual studio 2012\Projects\Recrute\Recrute\bin\tr-TR\Kendo.Mvc.resources.dll
 C:\Users\Rihab\documents\visual studio 2012\Projects\Recrute\Recrute\bin\uk-UA\Kendo.Mvc.resources.dll
 C:\Users\Rihab\documents\visual studio 2012\Projects\Recrute\Recrute\bin\zh-CN\Kendo.Mvc.resources.dll
+C:\Users\Rihab\documents\visual studio 2012\Projects\Recrute\Recrute\bin\EntityFramework.SqlServer.dll
+C:\Users\Rihab\documents\visual studio 2012\Projects\Recrute\Recrute\bin\EntityFramework.SqlServer.xml

@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <title>@ViewBag.Title - Recrutement TELNET</title>
+        <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+    	<link href="@Url.Content("~/Content/kendo/2015.2.624/kendo.common.min.css")" rel="stylesheet" type="text/css" />
+	<link href="@Url.Content("~/Content/kendo/2015.2.624/kendo.mobile.all.min.css")" rel="stylesheet" type="text/css" />
+	<link href="@Url.Content("~/Content/kendo/2015.2.624/kendo.dataviz.min.css")" rel="stylesheet" type="text/css" />
+	<link href="@Url.Content("~/Content/kendo/2015.2.624/kendo.default.min.css")" rel="stylesheet" type="text/css" />
+	<link href="@Url.Content("~/Content/kendo/2015.2.624/kendo.dataviz.default.min.css")" rel="stylesheet" type="text/css" />
+	<script src="@Url.Content("~/Scripts/kendo/2015.2.624/jquery.min.js")"></script>
+	<script src="@Url.Content("~/Scripts/kendo/2015.2.624/jszip.min.js")"></script>
+	<script src="@Url.Content("~/Scripts/kendo/2015.2.624/kendo.all.min.js")"></script>
+	<script src="@Url.Content("~/Scripts/kendo/2015.2.624/kendo.aspnetmvc.min.js")"></script>
+	<script src="@Url.Content("~/Scripts/kendo.modernizr.custom.js")"></script>
+</head>
+    <body>
+        <header>
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <<table>
+                        <tr>
+                            <td>
+                                <img  class="site-title"  src="../Images/logo.jpg" alt="TELNET Holdings" />
+                            </td>
+                            <td>
+                                @using (Html.BeginForm())
+                                {
+                                    <p>Cherchez dans le site: @Html.TextBox("Chezchez dans le site")  
+                                        <input type="submit" value="Recherche" /></p>
+                                }
+                            </td>
+                        </tr>
+                    </table>
+                   
+                   
+                    <!--<p class="site-title">@Html.ActionLink("titre", "Index", "Home")</p>-->
+                </div>   
+                <div class="float-right">
+                    <nav>
+                        
+                         <section class="login-button">
+                            @Html.Partial("_LoginPartial")
+                             
+                        </section>
+
+                        <ul id="menu">
+   @(Html.Kendo().Menu()
+      .Name("Menu")
+      .Items(items =>
+      {
+          items.Add().Text("Accueil").Action("Index", "Home");
+          items.Add().Text("Qui sommes nous?").Action("About", "Home");
+          items.Add().Text("Offres")
+              .Items(children =>
+               {
+                   children.Add().Text("Offres Embauche").Action("Index", "JobOffer"); ;
+                   children.Add().Text("Offres Stage").Action("Index", "InternshipOffer"); ;
+                   //HtmlAttributes(new { style = "font-size:medium; text-transform: uppercase; display: block; width:20em; background:#a0a0a0; list-style:none; margin:auto; line-height:2em; border:1px solid #a60000; position:absolute; top: 40px" });
+               });
+          items.Add().Text("Candidature Spontannée").Action("Index", "Home");
+          items.Add().Text("Contact").Action("Contact", "Home");//.Enabled(false);
+      })
+      .HtmlAttributes(new { style = "text-transform: uppercase; padding: 5px 10px; display: block;" })
+    )
+
+                        </ul>
+                    </nav>
+                       
+                </div>
+            </div>
+        </header>
+        <div id="body">
+            <img data-bind="rotateImages: bannerImages" data-rotate-delay="5000" src="../Images/pic1.PNG" style="opacity: 1; display: block;">
+
+            @RenderSection("scripts", required: false)
+            @RenderSection("featured", required: false)
+            <section class="content-wrapper main-content clear-fix">
+                @RenderBody()
+                @Scripts.Render("~/bundles/jqueryui")
+            </section>
+        </div>
+
+        <footer>
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <p>&copy; @DateTime.Now.Year - Rihab CHAKCHOUK</p>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>
