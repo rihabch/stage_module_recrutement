@@ -1,119 +1,144 @@
 ﻿@model Recrute.Models.User
 
 @{
-    ViewBag.Title = "Détails de l'Utilisateur";
+    ViewBag.Title = "Détails de l'utilisateur";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h2>Détails de l'Utilisateur</h2>
+ <div style="text-align: center; border-radius: 10px 10px 10px 10px; margin : auto auto auto auto; padding: 5px, 7px, 5px, 20px; background-color:rgb(212, 220, 220);">
+      <br /><br />
+<h2>Détails de l'utilisateur @Html.DisplayFor(model => model.userFirstName)</h2><br /><br />
+       <table border="1" style="margin : auto auto auto auto;">
+         <tr>
+             <th>
+                 @Html.DisplayNameFor(model => model.userName)
+             </th>
+             <td>
+                 @Html.DisplayFor(model => model.userName)
+             </td>
+         </tr>
+         <tr>
+             <th>
+                  @Html.DisplayNameFor(model => model.userFirstName)
+             </th>
+             <td>
+                  @Html.DisplayFor(model => model.userFirstName)
+             </td>
+         </tr>
+         <tr>
+             <th>
+                 @Html.DisplayNameFor(model => model.email)
+             </th>
+             <td>
+                 @Html.DisplayFor(model => model.email)
+             </td>
+         </tr>
+         <tr>
+             <th>
+                 @Html.DisplayNameFor(model => model.password)
+             </th>
+             <td>
+                 @Html.DisplayFor(model => model.password)
+             </td>
+         </tr>
+         <tr>
+             <th>
+                 @Html.DisplayNameFor(model => model.DateOfBirth)
+             </th>
+             <td>
+                 @Html.DisplayFor(model => model.DateOfBirth)
+             </td>
+         </tr>
+         <tr>
+             <th>
+                 @Html.DisplayNameFor(model => model.nationality)
+             </th>
+             <td>
+                 @Html.DisplayFor(model => model.nationality)
+             </td>
+         </tr>
+        <tr>
+             <th>
+                 @Html.DisplayNameFor(model => model.placeOfBirth)
+             </th>
+             <td>
+                 @Html.DisplayFor(model => model.placeOfBirth)
+             </td>
+         </tr>
+         <tr>
+             <th>
+                 @Html.DisplayNameFor(model => model.famSituation)
+             </th>
+             <td>
+                 @Html.DisplayFor(model => model.famSituation)
+             </td>
+         </tr>
+         <tr>
+             <th>
+                  @Html.DisplayNameFor(model => model.phoneNum)
+             </th>
+             <td>
+                  @Html.DisplayFor(model => model.phoneNum)
+             </td>
+         </tr>
+         <tr>
+             <th>
+                 @Html.DisplayNameFor(model => model.gsmNum)
+             </th>
+             <td>
+                 @Html.DisplayFor(model => model.gsmNum)
+             </td>
+         </tr>
+         <tr>
+             <th>
+                 @Html.DisplayNameFor(model => model.adress)
+             </th>
+             <td>
+                 @Html.DisplayFor(model => model.adress)
+             </td>
+         </tr>
+         <tr>
+             <th>
+                 @Html.DisplayNameFor(model => model.city)
+             </th>
+             <td>
+                 @Html.DisplayFor(model => model.city)
+             </td>
+         </tr>
+         <tr>
+             <th>
+                 @Html.DisplayNameFor(model => model.country)
+             </th>
+             <td>
+                 @Html.DisplayFor(model => model.country)
+             </td>
+         </tr>
+         <tr>
+             <th>
+                 @Html.DisplayNameFor(model => model.codePoste)
+             </th>
+             <td>
+                 @Html.DisplayFor(model => model.codePoste)
+             </td>
+             <tr>
+             <th>
+                 @Html.DisplayNameFor(model => model.DateOfInscri)
+             </th>
+             <td>
+                 @Html.DisplayFor(model => model.DateOfInscri)
+             </td>
+         </tr>
+         </tr>
+         </table>
 
-<fieldset>
-    <legend>Utilisateur</legend>
+     <br /><br />
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.userName)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.userName)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.userFirstName)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.userFirstName)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.email)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.email)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.password)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.password)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.DateOfBirth)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.DateOfBirth)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.nationality)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.nationality)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.placeOfBirth)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.placeOfBirth)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.famSituation)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.famSituation)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.phoneNum)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.phoneNum)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.gsmNum)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.gsmNum)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.adress)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.adress)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.city)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.city)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.country)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.country)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.codePoste)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.codePoste)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.DateOfInscri)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.DateOfInscri)
-    </div>
-</fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.userID }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Modifier les informations", "Edit", "User", new { id=Model.userID }, htmlAttributes: new { @class = "k-button"})
+    @Html.ActionLink("Retour à l'accueil", "Index", "Home", htmlAttributes: new { @class = "k-button" })
 </p>
+
+      <br /><br />
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -8,9 +8,12 @@ using Recrute.Models;
 using Kendo.Mvc.Extensions;
 using System.Data.Entity;
 using System.Web;
+using System.Collections;
+using System.Globalization;
 
 namespace Recrute.Controllers
 {
+    [CustomAuthorize]
     public class UserController : Controller
     {
         //
@@ -24,20 +27,17 @@ namespace Recrute.Controllers
             context = new RecruteContext();
             userservice = new UserService();
         }
+
+        [Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
-
-            if (Session["LogedUserID"] == null)
-            {
-                return RedirectToAction("Index", "Home");
-            }
-            else
-            {
                 List<User> users = context.Users.ToList();
                 return View(users);
-            }
+            
         }
 
+
+        [Authorize(Roles = "Admin, User")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -58,13 +58,14 @@ namespace Recrute.Controllers
             return View();
         }
 
+
         [HttpPost]
         public ActionResult Create(User user)
         {
             if (ModelState.IsValid)
             {
                 context.Users.Add(user);
-                
+
                 Session["LogedUserID"] = user.userID.ToString();
                 Session["LogedUserFirstname"] = user.userFirstName.ToString();
                 Session["LogedUserName"] = user.userName.ToString();
@@ -80,31 +81,7 @@ namespace Recrute.Controllers
             return View(user);
         }
 
-        public ActionResult CreateAdmin()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult CreateAdmin(User user)
-        {
-            if (ModelState.IsValid)
-            {
-                context.Users.Add(user);
-
-                Session["LogedUserID"] = user.userID.ToString();
-                Session["LogedUserFirstname"] = user.userFirstName.ToString();
-                Session["LogedUserName"] = user.userName.ToString();
-                Roles.AddUserToRole(user.email, "Admin");
-                FormsAuthentication.SetAuthCookie(user.email, false);
-                Session["LoggedUserRole"] = Roles.GetRolesForUser(user.email);
-                context.SaveChanges();
-                return RedirectToAction("Index", "Home");
-            }
-
-            return View(user);
-        }
-
+        //[Authorize(Roles = "Admin, User")]
         public ActionResult Edit(int id)
         {
             User user = context.Users.Find(id);
@@ -115,6 +92,7 @@ namespace Recrute.Controllers
             return View(user);
         }
 
+        //[Authorize(Roles = "Admin, User")]
         [HttpPost]
         public ActionResult Edit(int id, User user)
         {
@@ -153,6 +131,8 @@ namespace Recrute.Controllers
             return View(user);
         }
 
+
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
@@ -194,7 +174,7 @@ namespace Recrute.Controllers
                         Session["LogedUserName"] = v.userName.ToString();
                         Session["LoggedUserRole"] = Roles.GetRolesForUser(v.email);
                         FormsAuthentication.SetAuthCookie(v.email, false);
-                        return RedirectToAction("Index", "User");
+                        return RedirectToAction("Details", "User", new { id = v.userID });
                     }
                 }
             }
@@ -232,49 +212,5 @@ namespace Recrute.Controllers
             FormsAuthentication.SignOut();
             return RedirectToAction("Index", "Home");
         }
-        public ActionResult Editing_Popup()
-        {
-            return View();
-        }
-
-        public ActionResult EditingPopup_Read([DataSourceRequest] DataSourceRequest request)
-        {
-            userservice = new UserService();
-            return Json(userservice.Read().ToDataSourceResult(request));
-        }
-
-        [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult EditingPopup_Create([DataSourceRequest] DataSourceRequest request, User user)
-        {
-            if (user != null && ModelState.IsValid)
-            {
-                userservice.Create(user);
-            }
-
-            return Json(new[] { user }.ToDataSourceResult(request, ModelState));
-        }
-
-        [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult EditingPopup_Update([DataSourceRequest] DataSourceRequest request, User user)
-        {
-            if (user != null && ModelState.IsValid)
-            {
-                userservice.Update(user);
-            }
-
-            return Json(new[] { user }.ToDataSourceResult(request, ModelState));
-        }
-
-        [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult EditingPopup_Destroy([DataSourceRequest] DataSourceRequest request, User user)
-        {
-            if (user != null)
-            {
-                userservice.Destroy(user);
-            }
-
-            return Json(new[] { user }.ToDataSourceResult(request, ModelState));
-        }
-        
     }
 }

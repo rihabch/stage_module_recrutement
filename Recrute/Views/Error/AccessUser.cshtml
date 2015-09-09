@@ -1,0 +1,12 @@
+﻿@{
+    ViewBag.Title = "AccessUser";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>AccessUser</h2>
+
+<p>Vous devez vous connecter pour acceder à cette page.</p>
+ @Html.ActionLink("Se connecter", "Login", "User", htmlAttributes: new { @class = "k-button" })
+
+<p>Vous n'avez pas un compte?</p>
+ @Html.ActionLink("Créer un nouveau compte", "Create", "User", htmlAttributes: new { @class = "k-button" })

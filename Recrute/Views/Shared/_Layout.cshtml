@@ -25,20 +25,42 @@
                 <div class="float-left">&nbsp;
                   <table>
                         <tr>
-                            <td width="557">
-                                <img  class="site-title"  src="../Images/top_logo.png" alt="TELNET Holdings" />
+                            <td width="400">
+                                    @Html.ActionLink(
+                                    " ", 
+                                    "Index", 
+                                    "Home", 
+                                    null , 
+                                    new { 
+                                        style = "background: url('" + Url.Content("~/Images/top_logo.png") + "') no-repeat center right; display:block; height:84px; width:264px;" 
+                                    }
+                                )
                             </td>
-                            <td width="311">
-                                @using (Html.BeginForm())
-                                {
-                                    <p>Cherchez dans le site: @Html.TextBox("Chezchez dans le site")                                        </p>
-                                }
-                            <input type="submit" value="Recherche" /></td>
+                            <td width="400">
+                                
+       <!--                           
+        <div>
+             <script>
+                 (function () {
+                     var cx = '003589130843646602429:bg3t4ynrvry';
+                     var gcse = document.createElement('script');
+                     gcse.type = 'text/javascript';
+                     gcse.async = true;
+                     gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+                         '//cse.google.com/cse.js?cx=' + cx;
+                     var s = document.getElementsByTagName('script')[0];
+                     s.parentNode.insertBefore(gcse, s);
+                 })();
+            </script>
+            <gcse:search></gcse:search>
+            </div>
+-->
+                                
+                            </td>
                         </tr>
                     </table>
                    
                    
-                    <!--<p class="site-title">@Html.ActionLink("titre", "Index", "Home")</p>-->
                 </div>   
                 <div class="float-right">
                     <nav>
@@ -47,11 +69,11 @@
                             @Html.Partial("_LoginPartial")
                              
                         </section>
-
+                        <br/>
                         <div id="wowslider-container1">
                     <div class="ws_images"><ul>
 		                    <li><img src="../Scripts/data1/images/pic1.jpg" alt="pic1" title="pic1" id="wows1_0"/></li>
-		                    <li><img src="../Scripts/data1/images/pic2.jpg" alt="wowslideshow" title="pic2" id="wows1_1"/></li>
+		                    <li><img src="../Scripts/data1/images/pic2.jpg" alt="pic2" title="pic2" id="wows1_1"/></li>
 		                    <li><img src="../Scripts/data1/images/pic3.jpg" alt="pic3" title="pic3" id="wows1_2"/></li>
 	                    </ul></div>
                     <div class="ws_shadow"></div>

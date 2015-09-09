@@ -5,25 +5,42 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Login</h2>
-
-<h3>Se connecter</h3>
-
-<section class="login">
+<section class="login" >
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary()
-        
-            
-                @Html.LabelFor(m => m.email)
-                @Html.TextBoxFor(m => m.email)
-            
-                @Html.LabelFor(m => m.password)
-                @Html.PasswordFor(m => m.password)
-       <br/>  
-        <input type="submit" value="S'authentifier" class="k-button" />
-}
 
+    <div style="border-radius: 10px 10px 10px 10px; margin : auto 25% auto 25%; padding: 5px, 7px, 5px, 20px; background-color:rgb(212, 220, 220);" >
+    <br />
+        <center>
+        <h2>Se connecter</h2><br />
+    </center>   
+    <table border="1" >         
+            
+         <tr>
+        <th style="width:200px; height:50px; text-align: center;" > 
+            @Html.LabelFor(m => m.email)
+        </th>      
+         <td>       
+             @Html.TextBoxFor(m => m.email, new { style = "width: 200px;" })
+         </td>
+        </tr>
+          <tr>
+        <th style="width:200px; height:50px; text-align: center;" > 
+            @Html.LabelFor(m => m.password)
+        </th>      
+         <td>      
+            @Html.PasswordFor(m => m.password, new { style = "width: 200px;" })
+         </td>
+        </tr> 
+    </table>
+        
+        <p style="text-align: center;">
+             <input type="submit" value="S'authentifier" class="k-button" />
+        </p>
+        <br /> 
+      </div>
+}
     </section>
 
 @section Scripts {

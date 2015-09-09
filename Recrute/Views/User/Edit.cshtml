@@ -4,28 +4,30 @@
     ViewBag.Title = "Modifier un utilisateur";
 }
 
-<h2>Modifier l'utilisateur</h2>
-
 @using (Html.BeginForm()) {
-    @Html.ValidationSummary(true)
+ @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
 
-    <fieldset>
-        <legend>Utilisateur</legend>
+ 
+      <div style="text-align: center; border-radius: 10px 10px 10px 10px; margin : auto auto auto auto; padding: 5px, 7px, 5px, 20px; background-color:rgb(212, 220, 220);">
+        <br />  
+       
+        <h2>Modifier l'utilisateur</h2>
 
-        @Html.HiddenFor(model => model.userID)
-
-<table border="1">
+        <br /><br />
+        <br />
+      
+    <table border="1" style="margin : auto auto auto auto;">
     <tr>
-        <th>
+        <th style="width:200px; height:50px; text-align: center;">
            @Html.LabelFor(m => m.userFirstName)
         </th>
         <td>
             @Html.EditorFor(m => m.userFirstName)
              @Html.ValidationMessageFor(model => model.userFirstName)
          </td>
-    </tr>
-    <tr>
-         <th>
+   
+         <th style="width:200px; height:50px; text-align: center;">
             @Html.LabelFor(m => m.userName)
         </th>
         <td>
@@ -34,31 +36,30 @@
         </td>
     </tr>
     <tr>
-         <th>
+         <th style="width:200px; height:50px; text-align: center;">
             @Html.LabelFor(m => m.email)
         </th>
         <td>
             @Html.EditorFor(m => m.email)
             @Html.ValidationMessageFor(model => model.email)
         </td>
-    </tr>
-    <tr>
-        <th>
+    
+        <th style="width:200px; height:50px; text-align: center;">
             @Html.LabelFor(m => m.password)
         </th>
         <td>
-            @Html.EditorFor(m => m.password)
+            @Html.EditorFor(m => m.password, new { style = "width: 150px;" })
             @Html.ValidationMessageFor(model => model.password)
         </td>
     </tr>
     <tr>
-        <th>
+        <th style="width:200px; height:50px; text-align: center;">
             @Html.LabelFor(m => m.DateOfBirth)
         </th>
         <td>
             @(Html.Kendo().DatePickerFor(m => m.DateOfBirth)
                     .Name("DateOfBirth")
-                    .HtmlAttributes(new { style = "width:300px" })
+                    .HtmlAttributes(new { style = "width:170px" })
                     .Min(new DateTime(1900, 1, 1)) //Set min date of the datepicker
                     .Max(DateTime.Today) //Set min date of the datepicker
                     .Value(DateTime.Today) //Set the value of the datepicker
@@ -67,9 +68,8 @@
              @Html.ValidationMessageFor(model => model.DateOfBirth)
                
         </td>
-    </tr>
-    <tr>
-        <th>
+
+        <th style="width:200px; height:50px; text-align: center;">
             @Html.LabelFor(m => m.placeOfBirth)
         </th>
         <td>
@@ -78,46 +78,43 @@
         </td>
     </tr>
      <tr>
-        <th>
+        <th style="width:200px; height:50px; text-align: center;">
             @Html.LabelFor(m => m.nationality)
         </th>
         <td>
             @Html.EditorFor(m => m.nationality)
             @Html.ValidationMessageFor(model => model.nationality)
         </td>
-    </tr>
-    <tr>
-        <th>
+   
+        <th style="width:200px; height:50px; text-align: center;">
              @Html.LabelFor(m => m.famSituation)
         </th>
         <td>
-            @Html.LabelFor(m => m.famSituation)
-                @(Html.Kendo().AutoComplete()
-                     .Name("familysituation")
-                     .Filter("startswith")
-                     .Placeholder("Choisir une situation familiale...")
-                     .BindTo(new string[] {
-                            "Célibataire",
-                            "Marié(e)",
-                            "Divorcé(e)",
-                            "Veuf(ve)",
-                     })
-                     .HtmlAttributes(new { style = "width:300px" })
-                )
+
+            @(Html.Kendo().DropDownList()
+          .Name("famSituation")
+          .BindTo(new List<string>() {
+              "Célibataire",
+              "Marié(e)",
+              "Divorcé(e)",
+              "Veuf(ve)"
+          })
+    )
+
+          
              @Html.ValidationMessageFor(model => model.famSituation)
         </td>
     </tr>
     <tr>
-        <th>
+        <th style="width:300px; height:50px; text-align: center;">
             @Html.LabelFor(m => m.gsmNum)
         </th>
         <td>
             @Html.EditorFor(m => m.gsmNum)
             @Html.ValidationMessageFor(model => model.gsmNum)
         </td>
-    </tr>
-    <tr>
-        <th>
+   
+        <th style="width:300px; height:50px; text-align: center;">
             @Html.LabelFor(m => m.phoneNum)
         </th>
         <td>
@@ -126,34 +123,44 @@
         </td>
     </tr>
     <tr>
-        <th>
+        <th style="width:200px; height:50px; text-align: center;">
             @Html.LabelFor(m => m.adress)
         </th>
         <td>
             @Html.EditorFor(m => m.adress)
             @Html.ValidationMessageFor(model => model.adress)
         </td>
-    </tr>
-     <tr>
-        <th>
+    
+        <th style="width:200px; height:50px; text-align: center;">
             @Html.LabelFor(m => m.country)
         </th>
         <td>
-            @Html.EditorFor(m => m.country)
+            @(Html.Kendo().DropDownList()
+          .Name("country")
+          .BindTo(new List<string>() {
+              "Afrique du Sud","Arabie Saoudite","Australie",
+              "Bangladech",
+              "Canada","Chine",
+              "Etats Unis", 
+              "France",              
+              "Italie",
+              "Japan",
+              "Tunisie",
+          })
+    )
             @Html.ValidationMessageFor(model => model.country)
         </td>
     </tr>
     <tr>
-        <th>
+        <th style="width:200px; height:50px; text-align: center;">
             @Html.LabelFor(m => m.city)
         </th>
         <td>
             @Html.EditorFor(m => m.city)
             @Html.ValidationMessageFor(model => model.city)
         </td>
-    </tr>
-    <tr>
-        <th>
+    
+        <th style="width:200px; height:50px; text-align: center;">
             @Html.LabelFor(m => m.codePoste)
         </th>
         <td>
@@ -163,17 +170,14 @@
     </tr>
 
     </table>
-
-        <p>
-            <input type="submit" value="Save" />
+           <br /><br />
+       <p style="margin : auto auto auto 50%;">
+           
+            <input type="submit" value="Enregistrer les modifications" class="k-button" />
         </p>
-    </fieldset>
+    <br /> <br />
+</div>  
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
-
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }

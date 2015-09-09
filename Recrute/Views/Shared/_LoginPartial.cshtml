@@ -1,6 +1,6 @@
 ﻿@if (Request.IsAuthenticated) {
     <text>
-        @using (Html.BeginForm("Se déconnecter", "User", FormMethod.Post, new { id = "logoutForm" })) {
+        @using (Html.BeginForm("LogOff", "User", "Se déconnecter", FormMethod.Post, new { id = "logoutForm" })) {
             @Html.AntiForgeryToken()
             <span class="hellouser">Bienvenue, @User.Identity.Name!</span> <a href="javascript:document.getElementById('logoutForm').submit()" class="k-button">Log off</a>
             var membership = (SimpleMembershipProvider)Membership.Provider; 
